@@ -5,6 +5,7 @@ import pyproj
 import re 
 import rdflib
 import json
+import logging
 import shapely
 import math
 import warnings
@@ -17,8 +18,12 @@ from rdflib.namespace import RDF
 
 warnings.filterwarnings("ignore", category=ShapelyDeprecationWarning)
 
+log = logging.getLogger('invasive_checker') 
+
+
 class Aphia_Checker : 
     def __init__(self):
+        log.debug('Inititialising...')
         self.clear_cache()
     
     def check_aphia(self,lon,lat,aphia_id, buffer = 5):
@@ -33,7 +38,7 @@ class Aphia_Checker :
         geom_df is a dataframe of MRGID geoms retrieved from MR. 
         geom_store is a dict of geom_df
         '''
-        
+        log.debug(f'Received request for {aphia_id} for location {lon}/{lat}:buffer={buffer}')
         sample_point = Point(lon,lat)
 
         # Get Aphia status, geoms associated with the aphia and whether the sample location is 
@@ -45,9 +50,10 @@ class Aphia_Checker :
                                   'Error': 'No distribution found for this Aphia_ID'}
             return human_readable_results, None
         
+        log.debug(f'Fetching geom from RDF...')
         this_aphia_df['geom'] = this_aphia_df.apply(lambda x: self.get_rdf_geom(x['MRGID']), axis=1)
-        this_aphia_gdf = gpd.GeoDataFrame(this_aphia_df, geometry='geom')
-        
+        log.debug(f'Converting to shapely geom and doing GIS work...')
+        this_aphia_gdf = gpd.GeoDataFrame(this_aphia_df, geometry='geom')        
         this_aphia_gdf['contains_sample_point'] = this_aphia_gdf.contains(sample_point)
         this_aphia_gdf['distance_to_distribution'] = this_aphia_gdf.distance(sample_point)
         
@@ -64,16 +70,17 @@ class Aphia_Checker :
         closest_MR = introduced_rows[introduced_rows.distance_to_distribution == introduced_rows.distance_to_distribution.min()]
         closest_distance = self.calc_distance(closest_MR, sample_point) 
 
+        log.debug(f'Preparing results...')
         human_readable_results = {'aphia_id': aphia_id,
                                   'sample location [WKT]': sample_point.wkt,
-                                  'sample location within aphia distibution': sample_within_MR,
-                                  'sample location within <buffer> of aphia distribution': sample_closeto_MR,
+                                  'sample location within aphia distibution': bool(sample_within_MR),
+                                  'sample location within <buffer> of aphia distribution': bool(sample_closeto_MR),
                                   'buffer [deg]': buffer,  
-                                  'species known to be introduced at sample location': MR_introduced,
-                                  'nearest introduced location': closest_MR.locality.values,
+                                  'species known to be introduced at sample location': bool(MR_introduced),
+                                  'nearest introduced location': closest_MR.locality.values.tolist(),
                                   'distance [km] to nearest introduced location': closest_distance,
                                   'distance [deg] to nearest introduced location':MR_dist_introduced,
-                                  'nearest introduced MRGID': closest_MR.MRGID.values,
+                                  'nearest introduced MRGID': closest_MR.MRGID.values.tolist(),
                                   'AphiaDistribution URL':this_aphia_dist_url}
         
         # =============
@@ -81,7 +88,7 @@ class Aphia_Checker :
         #   - Drop geom column since it can get very big 
         #   - drop non-useful or confusing columns
         # =============
-        this_aphia_gdf = this_aphia_gdf[this_aphia_gdf['distance_to_distribution'] < buffer]
+        # this_aphia_gdf = this_aphia_gdf[this_aphia_gdf['distance_to_distribution'] < buffer]
         invasive_df = pd.DataFrame(this_aphia_gdf.drop(['geom'],axis=1))  
         invasive_df = invasive_df.drop(['decimalLongitude', 
                                         'decimalLatitude',
@@ -90,7 +97,9 @@ class Aphia_Checker :
                                         'higherGeographyID'],axis=1)
         
         # =============
-        return human_readable_results, this_aphia_gdf
+        log.debug(f'Done:')
+        log.debug(human_readable_results)
+        return human_readable_results, invasive_df
     
     def get_rdf_geom(self, mrgid):
         '''
@@ -119,7 +128,7 @@ class Aphia_Checker :
                         pass
 
             num_geoms = len(geoms) 
-            print(f'  -combining {num_geoms} geoms for {mrgid}')
+            log.debug(f'  -combining {num_geoms} geoms for {mrgid}')
             single_geom = shapely.ops.unary_union(geoms)
             self.geom_store[mrgid] = single_geom
             return single_geom
@@ -134,7 +143,7 @@ class Aphia_Checker :
             wrms_dist = self.requester(wrms_distribution).json()
 
             if len(wrms_dist) == 0 :
-                print(f'WARNING: No distribution for Aphia {aphia_id}')
+                log.warning(f'No distribution for Aphia {aphia_id}')
                 return None
             else:
                 wrms_dist_df = pd.DataFrame(wrms_dist) 
@@ -148,8 +157,8 @@ class Aphia_Checker :
                 wrms_dist_df = wrms_dist_df.drop(['root'],axis=1)
                 return wrms_dist_df, wrms_distribution
         except Exception as err:
-            print(f'Error retriving distribution for aphia {aphia_id}')
-            print(err)
+            log.warning(f'Error retriving distribution for aphia {aphia_id}')
+            log.warning(err)
             return None,None
     
     def calc_distance(self, df_row, point):
@@ -182,14 +191,14 @@ class Aphia_Checker :
             try:
                 r = reply
             except Exception as error:
-                print(error)
+                log.error(error)
                 raise Exception("No known distribution")
                 r = []
             return r
         else: 
             # Something not right with the request...
-            print(reply)
-            print(reply.text)
+            log.warning(reply)
+            log.warning(reply.text)
             return []
 
     

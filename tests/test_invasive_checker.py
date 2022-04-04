@@ -34,5 +34,5 @@ def test_native():
     aa, bb = aphia_checker.check_aphia(lon, lat, aphia_id)
 
     assert aa['aphia_id']==126436
-    assert aa['sample location within <buffer> of aphia distribution']
+    assert aa['sample location within <buffer> of aphia distribution'] == True
     assert aa['distance [deg] to nearest introduced location'] == "No known 'introduced' locations"
