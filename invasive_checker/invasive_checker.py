@@ -4,6 +4,7 @@ import geopandas as gpd
 import pyproj
 import re 
 import rdflib
+import os
 import json
 import logging
 import shapely
@@ -12,6 +13,7 @@ import warnings
 from shapely.errors import ShapelyDeprecationWarning
 from shapely.geometry import Point, Polygon
 from shapely.ops import nearest_points
+import datetime
 
 from rdflib import Graph 
 from rdflib.namespace import RDF 
@@ -24,7 +26,8 @@ log = logging.getLogger('invasive_checker')
 class Aphia_Checker : 
     def __init__(self):
         log.debug('Inititialising...')
-        self.clear_cache()
+        self.geom_store = {} 
+        self.cache_persist_period = os.getenv('CACHE_PERIOD',default=7)
     
     def check_aphia(self,lon,lat,aphia_id, buffer = 5):
         '''
@@ -50,9 +53,9 @@ class Aphia_Checker :
                                   'Error': 'No distribution found for this Aphia_ID'}
             return human_readable_results, None
         
-        log.debug(f'Fetching geom from RDF...')
+        log.debug(f'Fetching geom...')
         this_aphia_df['geom'] = this_aphia_df.apply(lambda x: self.get_rdf_geom(x['MRGID']), axis=1)
-        log.debug(f'Converting to shapely geom and doing GIS work...')
+        log.debug(f'Doing GIS work...')
         this_aphia_gdf = gpd.GeoDataFrame(this_aphia_df, geometry='geom')        
         this_aphia_gdf['contains_sample_point'] = this_aphia_gdf.contains(sample_point)
         this_aphia_gdf['distance_to_distribution'] = this_aphia_gdf.distance(sample_point)
@@ -107,7 +110,13 @@ class Aphia_Checker :
         Use some simple caching to speed things up. 
         '''
         if mrgid in self.geom_store:
-            single_geom = self.geom_store[mrgid]
+            data_store = self.geom_store[mrgid]
+            single_geom = data_store['geom']
+            cache_datetime = data_store['store_date']
+            today = datetime.date.today()
+            if (today - cache_datetime).days > self.cache_persist_period:
+                log.info(f'MRGID {mrgid} geom is old. Throwing it out...')
+                data_store.pop[mrgid]
             return single_geom
         else:
             mr_geom_request = f'https://marineregions.org/rest/getGazetteerGeometries.jsonld/{mrgid}/'
@@ -130,7 +139,10 @@ class Aphia_Checker :
             num_geoms = len(geoms) 
             log.debug(f'  -combining {num_geoms} geoms for {mrgid}')
             single_geom = shapely.ops.unary_union(geoms)
-            self.geom_store[mrgid] = single_geom
+
+
+            self.geom_store[mrgid] = {'geom':single_geom,
+                                      'store_date': datetime.date.today()}
             return single_geom
 
     def get_aphia_status(self, aphia_id):
@@ -206,5 +218,9 @@ class Aphia_Checker :
         '''
         Dump the stored dicts. Forces next call to be retrieved from web.
         '''
+        cache_len = len(self.geom_store)
+        xx = f'Clearing cache: dumping {cache_len} geoms...'
+        log.info(xx)
         self.geom_store = {} 
+        return {'message':xx}
     

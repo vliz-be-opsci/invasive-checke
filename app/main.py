@@ -33,5 +33,5 @@ async def read_user_item(aphia_id: str, lon: float, lat: float):
 
 @app.post("/clear_cache")
 async def clear_geom():
-    aphia_checker.clear_cache()
-    return
+    clear_result = aphia_checker.clear_cache()
+    return clear_result
