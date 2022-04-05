@@ -11,12 +11,17 @@ One point: up until now the species have been called "invasive". There is a tech
 
 
 ## Getting running in Docker
-A docker-compose file and .env file are provided. Together they deploy a container that contains a REST API with Swagger documentation. Currently there are only a few REST endpoints and they'll look like this when running on a local system with the default .env file: 
+A docker-compose file and sample.env file are provided. Together they deploy a container that contains a REST API with Swagger documentation. Currently there are only a few REST endpoints and they'll look like this when running on a local system with the default .env file: 
 
  - localhost:8090 - The root of the API. Returns a simple message
  - localhost:8090/docs - The swagger documentation
  - localhost:8090/check - Takes an aphia_id, lon and lat and returns the summary and dataframe
  - localhost:8090/clear_cache - Clears the internal geom cache of the Python class. 
+
+To get it all running please configure the sample.env file, save it as ".env" in the root directory of the repo, and finally run:
+
+> docker-compose up -d --build
+
 
 ## Human Readable Summary
 
