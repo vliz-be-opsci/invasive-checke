@@ -20,7 +20,7 @@ A docker-compose file and sample.env file are provided. Together they deploy a c
 
 To get it all running please configure the sample.env file, save it as ".env" in the root directory of the repo, and finally run:
 
-> docker-compose up -d --build
+> docker-compose up -d --build 
 
 
 ## Human Readable Summary
