@@ -26,7 +26,9 @@ async def root():
 
 @app.get("/check/{aphia_id}")
 async def read_user_item(aphia_id: str, 
-                        source: Query('worms', enum=['worms', 
+                         lon: float, 
+                         lat: float,
+                        source:str = Query('worms', enum=['worms', 
                                                     'algaebase',
                                                     'bold',
                                                     'dyntaxa',
@@ -36,11 +38,13 @@ async def read_user_item(aphia_id: str,
                                                     'ncbi',
                                                     'tsn',
                                                     'gisd']),
-                         lon: float, 
-                         lat: float):
+                         ):
     aa, bb = aphia_checker.check_aphia(lon, lat, aphia_id,source=source)
-    item_dict = {'summary':aa,
+    if (aa is not None)  and (bb is not None):
+        item_dict = {'summary':aa,
             'details':bb.fillna('').to_dict(orient='records')}
+    else: 
+        item_dict = None
     return item_dict 
 
 @app.get("/check/from_sciname/{sciname}")
@@ -48,8 +52,11 @@ async def from_sciname(sciname: str, lon: float, lat: float):
     aphia_json = aphia_checker.get_aphia_from_taxname(sciname) 
     aphia_id = aphia_json['AphiaID']
     aa, bb = aphia_checker.check_aphia(lon, lat, aphia_id,source='worms')
-    item_dict = {'summary':aa,
+    if (aa is not None)  and (bb is not None):
+        item_dict = {'summary':aa,
             'details':bb.fillna('').to_dict(orient='records')}
+    else: 
+        item_dict = None
     return item_dict
 
 @app.post("/clear_cache")

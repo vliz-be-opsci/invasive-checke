@@ -183,8 +183,11 @@ class Aphia_Checker :
         try:
             aphia_url = f'https://marinespecies.org/rest/AphiaRecordByExternalID/{external_id}?type={id_source}'
             aphia_return =  self.requester(aphia_url).json()
-            aphia_id = aphia_return['AphiaID']
-            return aphia_id
+            if aphia_return is not None:
+                aphia_id = aphia_return['AphiaID']
+                return aphia_id
+            else:
+                return None
         except Exception as err:
             log.warning(f'Error retriving distribution for {id_source}: {external_id}')
             log.warning(err)
@@ -244,7 +247,7 @@ class Aphia_Checker :
         Do a safe request and return the result.
         '''
         reply = requests.get(url)
-        if reply.ok:
+        if reply.status_code == 200:
             try:
                 r = reply
             except Exception as error:
@@ -252,6 +255,9 @@ class Aphia_Checker :
                 raise Exception("No known distribution")
                 r = []
             return r
+        elif reply.status_code == 204:
+            log.warning('No items found...')
+            return None
         else: 
             # Something not right with the request...
             log.warning(reply)
@@ -275,17 +281,17 @@ class Aphia_Checker :
 
         https://www.marinespecies.org/rest/AphiaRecordsByMatchNames?scientificnames[]=<some name>&marine_only=true
         '''
-        taxamatch_url = f'https://www.marinespecies.org/rest/AphiaRecordsByMatchNames?scientificnames[]={taxa_name}}&marine_only=true'
+        taxamatch_url = f'https://www.marinespecies.org/rest/AphiaRecordsByMatchNames?scientificnames[]={taxa_name}&marine_only=true'
         try:
             req_return = self.requester(taxamatch_url)
 
             if req_return.status_code == 204 :
-                log.warning(f'No aphia_id for sci-name {taxa_name} found...')
+                log.warning(f'No aphia for Aphia {taxa_name} found...')
                 return None
             elif req_return.status_code == 200:
-                return_json = req_return.json()[0][0]
                 log.debug(f'Returns: {req_return}') 
-                return return_json
+                req_return = req_return.json()[0][0]
+                return req_return
             else: 
                 log.warning('Not sure how I got here...')
                 log.warning(req_return)
