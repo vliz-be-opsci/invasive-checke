@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 import os
 import json
 import logging 
@@ -25,10 +25,31 @@ async def root():
     return {"message": "Aphia Checker. Provide Sample Lon/Lat and AphiaID of organism detected there"}
 
 @app.get("/check/{aphia_id}")
-async def read_user_item(aphia_id: str, lon: float, lat: float):
-    aa, bb = aphia_checker.check_aphia(lon, lat, aphia_id)
+async def read_user_item(aphia_id: str, 
+                        source: Query('worms', enum=['worms', 
+                                                    'algaebase',
+                                                    'bold',
+                                                    'dyntaxa',
+                                                    'fishbase',
+                                                    'iucn',
+                                                    'lsid',
+                                                    'ncbi',
+                                                    'tsn',
+                                                    'gisd']),
+                         lon: float, 
+                         lat: float):
+    aa, bb = aphia_checker.check_aphia(lon, lat, aphia_id,source=source)
     item_dict = {'summary':aa,
-            'details':bb.fillna('').to_dict()}
+            'details':bb.fillna('').to_dict(orient='records')}
+    return item_dict 
+
+@app.get("/check/from_sciname/{sciname}")
+async def from_sciname(sciname: str, lon: float, lat: float):
+    aphia_json = aphia_checker.get_aphia_from_taxname(sciname) 
+    aphia_id = aphia_json['AphiaID']
+    aa, bb = aphia_checker.check_aphia(lon, lat, aphia_id,source='worms')
+    item_dict = {'summary':aa,
+            'details':bb.fillna('').to_dict(orient='records')}
     return item_dict
 
 @app.post("/clear_cache")

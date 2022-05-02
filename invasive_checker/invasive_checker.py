@@ -27,9 +27,9 @@ class Aphia_Checker :
     def __init__(self):
         log.debug('Inititialising...')
         self.geom_store = {} 
-        self.cache_persist_period = os.getenv('CACHE_PERIOD',default=7)
+        self.cache_persist_period = int(os.getenv('CACHE_PERIOD',default=7))
     
-    def check_aphia(self,lon,lat,aphia_id, buffer = 5):
+    def check_aphia(self,lon,lat,id, buffer = 5, source='worms'):
         '''
         Check if the aphia is invasive, native or unknown. Return MRGID's that are within <buffer> degrees 
         of the sample location.
@@ -41,13 +41,19 @@ class Aphia_Checker :
         geom_df is a dataframe of MRGID geoms retrieved from MR. 
         geom_store is a dict of geom_df
         '''
-        log.debug(f'Received request for {aphia_id} for location {lon}/{lat}:buffer={buffer}')
+        
+        log.debug(f'Received request for {id} for location {lon}/{lat}:buffer={buffer}')
         sample_point = Point(lon,lat)
 
         # Get Aphia status, geoms associated with the aphia and whether the sample location is 
         # inside those geoms or not. 
         # =============
-        this_aphia_df, this_aphia_dist_url = self.get_aphia_status(aphia_id)
+        if source == 'worms':
+            aphia_id = id
+            this_aphia_df, this_aphia_dist_url = self.get_aphia_status(aphia_id)
+        else:
+            aphia_id = self.get_external_status(id, source)
+            this_aphia_df, this_aphia_dist_url = self.get_aphia_status(aphia_id)
         if this_aphia_df is None:
             human_readable_results = {'aphia_id': aphia_id,
                                   'Error': 'No distribution found for this Aphia_ID'}
@@ -145,6 +151,45 @@ class Aphia_Checker :
                                       'store_date': datetime.date.today()}
             return single_geom
 
+
+    def get_external_status(self, external_id, id_source):
+        '''
+        Get the APHIA ID from an externalID. See
+        https://marinespecies.org/rest/AphiaRecordByExternalID/
+
+        algaebase: Algaebase species ID
+        bold: Barcode of Life Database (BOLD) TaxID
+        dyntaxa: Dyntaxa ID
+        fishbase: FishBase species ID
+        iucn: IUCN Red List Identifier
+        lsid: Life Science Identifier
+        ncbi: NCBI Taxonomy ID (Genbank)
+        tsn: ITIS Taxonomic Serial Number
+        gisd: Global Invasive Species Database
+        '''
+        id_sources = {'algaebase': 'Algaebase species ID',
+                        'bold': 'Barcode of Life Database (BOLD) TaxID',
+                        'dyntaxa': 'Dyntaxa ID',
+                        'fishbase': 'FishBase species ID',
+                        'iucn': 'IUCN Red List Identifier',
+                        'lsid': 'Life Science Identifier',
+                        'ncbi': 'NCBI Taxonomy ID (Genbank)',
+                        'tsn': 'ITIS Taxonomic Serial Number',
+                        'gisd': 'Global Invasive Species Database'}
+
+        if id_source not in id_sources:
+            log.warning(f'Unkown external source: {id_source}.')
+            return None 
+        try:
+            aphia_url = f'https://marinespecies.org/rest/AphiaRecordByExternalID/{external_id}?type={id_source}'
+            aphia_return =  self.requester(aphia_url).json()
+            aphia_id = aphia_return['AphiaID']
+            return aphia_id
+        except Exception as err:
+            log.warning(f'Error retriving distribution for {id_source}: {external_id}')
+            log.warning(err)
+            return None 
+
     def get_aphia_status(self, aphia_id):
         '''
         Get the MRGIDs and invasive status for the aphia_id specified. Return dataframe with MRGID's of 
@@ -224,3 +269,28 @@ class Aphia_Checker :
         self.geom_store = {} 
         return {'message':xx}
     
+    def get_aphia_from_taxname(self, taxa_name):
+        '''
+        Given a taxon name string, get the aphia_id/s that are associated with it. 
+
+        https://www.marinespecies.org/rest/AphiaRecordsByMatchNames?scientificnames[]=<some name>&marine_only=true
+        '''
+        taxamatch_url = f'https://www.marinespecies.org/rest/AphiaRecordsByMatchNames?scientificnames[]={taxa_name}}&marine_only=true'
+        try:
+            req_return = self.requester(taxamatch_url)
+
+            if req_return.status_code == 204 :
+                log.warning(f'No aphia_id for sci-name {taxa_name} found...')
+                return None
+            elif req_return.status_code == 200:
+                return_json = req_return.json()[0][0]
+                log.debug(f'Returns: {req_return}') 
+                return return_json
+            else: 
+                log.warning('Not sure how I got here...')
+                log.warning(req_return)
+                return None
+        except Exception as err:
+            log.warning(f'Error retriving aphia_id for sci-name {taxa_name}')
+            log.warning(err)
+            return None
