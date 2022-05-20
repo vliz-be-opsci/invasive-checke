@@ -6,6 +6,7 @@ import re
 import rdflib
 import os
 import json
+import functools
 import logging
 import shapely
 import math
@@ -26,10 +27,55 @@ log = logging.getLogger('invasive_checker')
 class Aphia_Checker : 
     def __init__(self):
         log.debug('Inititialising...')
-        self.geom_store = {} 
+        # self.geom_store = {} # Removed cache, using functools.cache instead
         self.cache_persist_period = int(os.getenv('CACHE_PERIOD',default=7))
     
-    def check_aphia(self,lon,lat,id, buffer = 5, source='worms'):
+    def derive_status(self, sample_point, details_gdf, buffer):
+        '''
+        Provide some human readable results...
+        '''
+        log.debug(f'Preparing results...')
+
+        # sample_closeto_MR = (details_gdf.distance_to_distribution < buffer).any()
+
+        # MR_introduced = len(introduced_rows[(introduced_rows['contains_sample_point'] == True)].index) > 0
+        # MR_dist_introduced = min(introduced_rows.distance_to_distribution, default="No known 'introduced' locations")
+        # closest_MR = introduced_rows[introduced_rows.distance_to_distribution == introduced_rows.distance_to_distribution.min()]
+        # closest_distance = self.calc_distance(closest_MR, sample_point) 
+ 
+        if details_gdf.contains_sample_point.any():
+            # The organism has been recorded near the sample location
+            containing_gdf = details_gdf[details_gdf['contains_sample_point'] == True]
+            status = containing_gdf['establishmentMeans'].unique() 
+            mrgid =  containing_gdf['locationID'].unique() 
+        else:
+            # The organism has NOT been recorded near the sample location
+            status = ["Unrecorded"]
+            mrgid = ["None"]
+
+        derived_status = {  'Status':status,
+                            'Within':mrgid,
+                            'Nearest_Native_MRGID': None,
+                            'Nearest_Introduced_MRGID': None,
+                            'Nearest_Prev_Recorded_MRGID': None,
+                            }
+        
+        # human_readable_results = {'aphia_id': aphia_id,
+        #                           'sample location [WKT]': sample_point.wkt,
+        #                           'sample location within aphia distibution': bool(sample_within_MR),
+        #                           'sample location within <buffer> of aphia distribution': bool(sample_closeto_MR),
+        #                           'buffer [deg]': buffer,  
+        #                           'species known to be introduced at sample location': bool(MR_introduced),
+        #                           'nearest introduced location': closest_MR.locality.values.tolist(),
+        #                           'distance [km] to nearest introduced location': closest_distance,
+        #                           'distance [deg] to nearest introduced location':MR_dist_introduced,
+        #                           'nearest introduced MRGID': closest_MR.MRGID.values.tolist(),
+        #                           'AphiaDistribution URL':this_aphia_dist_url}
+            
+        return derived_status 
+
+
+    def check_aphia(self, lon, lat, id, buffer = 5, source='worms'):
         '''
         Check if the aphia is invasive, native or unknown. Return MRGID's that are within <buffer> degrees 
         of the sample location.
@@ -54,43 +100,26 @@ class Aphia_Checker :
         else:
             aphia_id = self.get_external_status(id, source)
             this_aphia_df, this_aphia_dist_url = self.get_aphia_status(aphia_id)
+
         if this_aphia_df is None:
-            human_readable_results = {'aphia_id': aphia_id,
+            status_dict = {'aphia_id': aphia_id,
                                   'Error': 'No distribution found for this Aphia_ID'}
-            return human_readable_results, None
+            return status_dict, None
         
         log.debug(f'Fetching geom...')
         this_aphia_df['geom'] = this_aphia_df.apply(lambda x: self.get_rdf_geom(x['MRGID']), axis=1)
         log.debug(f'Doing GIS work...')
         this_aphia_gdf = gpd.GeoDataFrame(this_aphia_df, geometry='geom')        
         this_aphia_gdf['contains_sample_point'] = this_aphia_gdf.contains(sample_point)
-        this_aphia_gdf['distance_to_distribution'] = this_aphia_gdf.distance(sample_point)
+        # this_aphia_gdf['distance_to_distribution'] = this_aphia_gdf.distance(sample_point)
+        this_aphia_gdf.establishmentMeans.replace('Alien','Introduced',inplace=True)
         
         # =============
         # Apply some human logic to determine whether the above results are of interest or not
-        #   - replace "Alien" with "introduced"
         # =============
-        this_aphia_gdf.establishmentMeans.replace('Alien','Introduced',inplace=True)
-        introduced_rows = this_aphia_gdf[this_aphia_gdf['establishmentMeans'] == 'Introduced']
-        sample_within_MR = this_aphia_gdf.contains_sample_point.any()
-        sample_closeto_MR = (this_aphia_gdf.distance_to_distribution < buffer).any()
-        MR_introduced = len(introduced_rows[(introduced_rows['contains_sample_point'] == True)].index) > 0
-        MR_dist_introduced = min(introduced_rows.distance_to_distribution, default="No known 'introduced' locations")
-        closest_MR = introduced_rows[introduced_rows.distance_to_distribution == introduced_rows.distance_to_distribution.min()]
-        closest_distance = self.calc_distance(closest_MR, sample_point) 
+        status_dict = self.derive_status(sample_point, this_aphia_gdf, buffer)
 
-        log.debug(f'Preparing results...')
-        human_readable_results = {'aphia_id': aphia_id,
-                                  'sample location [WKT]': sample_point.wkt,
-                                  'sample location within aphia distibution': bool(sample_within_MR),
-                                  'sample location within <buffer> of aphia distribution': bool(sample_closeto_MR),
-                                  'buffer [deg]': buffer,  
-                                  'species known to be introduced at sample location': bool(MR_introduced),
-                                  'nearest introduced location': closest_MR.locality.values.tolist(),
-                                  'distance [km] to nearest introduced location': closest_distance,
-                                  'distance [deg] to nearest introduced location':MR_dist_introduced,
-                                  'nearest introduced MRGID': closest_MR.MRGID.values.tolist(),
-                                  'AphiaDistribution URL':this_aphia_dist_url}
+        
         
         # =============
         # Prep for returning to user
@@ -107,49 +136,56 @@ class Aphia_Checker :
         
         # =============
         log.debug(f'Done:')
-        log.debug(human_readable_results)
-        return human_readable_results, invasive_df
+        log.debug(status_dict)
+        return status_dict, invasive_df
     
+    @functools.cache
     def get_rdf_geom(self, mrgid):
         '''
         Take single MRGID and return a single geom that's a combination of all geom's associated with that MRGID. 
         Use some simple caching to speed things up. 
+
+        Should be totally cacheable...
         '''
-        if mrgid in self.geom_store:
-            data_store = self.geom_store[mrgid]
-            single_geom = data_store['geom']
-            cache_datetime = data_store['store_date']
-            today = datetime.date.today()
-            if (today - cache_datetime).days > self.cache_persist_period:
-                log.info(f'MRGID {mrgid} geom is old. Throwing it out...')
-                data_store.pop[mrgid]
-            return single_geom
+        # if mrgid in self.geom_store:
+        #     data_store = self.geom_store[mrgid]
+        #     single_geom = data_store['geom']
+        #     cache_datetime = data_store['store_date']
+        #     today = datetime.date.today()
+        #     if (today - cache_datetime).days > self.cache_persist_period:
+        #         log.info(f'MRGID {mrgid} geom is old. Throwing it out...')
+        #         data_store.pop[mrgid]
+        #     return single_geom
+        # else:
+        mr_geom_request = f'https://marineregions.org/rest/getGazetteerGeometries.jsonld/{mrgid}/'
+        rdf = self.requester(mr_geom_request)
+        g = Graph()
+        g.parse(rdf.content, format='json-ld')
+        wkt_pred = rdflib.term.URIRef('http://www.opengis.net/ont/geosparql#asWKT')
+
+        geoms = []
+        for s, p, o in g: 
+            if p == wkt_pred:
+                try:
+                    bad_wkt = o.n3()
+                    xx = re.search('^.*\>\s(.*)\".*$', bad_wkt)
+                    good_wkt = xx[1]
+                    geoms.append(shapely.wkt.loads(good_wkt))
+                except:
+                    pass
+
+        num_geoms = len(geoms) 
+        if num_geoms > 20:
+            log.warning(f'  -Too many geoms: {num_geoms} geoms for {mrgid}. Only using first 20...')
+            geoms = geoms[0:19]
         else:
-            mr_geom_request = f'https://marineregions.org/rest/getGazetteerGeometries.jsonld/{mrgid}/'
-            rdf = self.requester(mr_geom_request)
-            g = Graph()
-            g.parse(rdf.content, format='json-ld')
-            wkt_pred = rdflib.term.URIRef('http://www.opengis.net/ont/geosparql#asWKT')
-
-            geoms = []
-            for s, p, o in g: 
-                if p == wkt_pred:
-                    try:
-                        bad_wkt = o.n3()
-                        xx = re.search('^.*\>\s(.*)\".*$', bad_wkt)
-                        good_wkt = xx[1]
-                        geoms.append(shapely.wkt.loads(good_wkt))
-                    except:
-                        pass
-
-            num_geoms = len(geoms) 
             log.debug(f'  -combining {num_geoms} geoms for {mrgid}')
-            single_geom = shapely.ops.unary_union(geoms)
+        single_geom = shapely.ops.unary_union(geoms)
 
 
-            self.geom_store[mrgid] = {'geom':single_geom,
-                                      'store_date': datetime.date.today()}
-            return single_geom
+        # self.geom_store[mrgid] = {'geom':single_geom,
+        #                             'store_date': datetime.date.today()}
+        return single_geom
 
 
     def get_external_status(self, external_id, id_source):
@@ -217,7 +253,7 @@ class Aphia_Checker :
                 wrms_dist_df = wrms_dist_df.drop(['root'],axis=1)
                 return wrms_dist_df, wrms_distribution
         except Exception as err:
-            log.warning(f'Error retriving distribution for aphia {aphia_id}')
+            log.warning(f'Error retrieving distribution for aphia {aphia_id}')
             log.warning(err)
             return None,None
     
@@ -242,6 +278,7 @@ class Aphia_Checker :
         else: 
             return None
     
+    @functools.cache
     def requester(self, url):
         '''
         Do a safe request and return the result.
@@ -275,6 +312,21 @@ class Aphia_Checker :
         self.geom_store = {} 
         return {'message':xx}
     
+    def get_aphia_from_lineage(self, tax_string, sep = ';'):
+        '''
+        Given a taxon lineage string (Eukaryota;Chordata;Ascidiacea;Enterogona;Ascidiidae;Ascidiella;Ascidiella scabra)
+        get the aphia_id for the lowest level.
+        '''
+        tax_lineage = tax_string.split(sep)
+        req_return = None
+        while req_return is None:
+            try:
+                req_return = self.get_aphia_from_taxname(tax_lineage[-1])
+                tax_lineage.pop(-1)
+            except IndexError:
+                log.warning('Reached end of taxon lineage without success...')
+        return req_return
+
     def get_aphia_from_taxname(self, taxa_name):
         '''
         Given a taxon name string, get the aphia_id/s that are associated with it. 

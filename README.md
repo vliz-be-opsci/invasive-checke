@@ -22,6 +22,21 @@ To get it all running please configure the sample.env file, save it as ".env" in
 
 > docker-compose up -d --build 
 
+## Internal data structure
+The input PEMA file seems to be an combination of a pivoted table with metadata columns. It's difficult to process this kind of file in a row-by-row method as different metadata is associated to different columns. Converting to a internal data structure that has one row per data point, with associated metadata, would be helpful:
+
+| New Column  | Description |
+| ----------- | ----------- |
+| OTU         | Same data as old column |
+| Sequence    | Sequence ID |
+| Count    | Cell value for (OTU,Sequence) |
+| Classification    | Sci-name |
+| Lat    | Latitude where sample was taken |
+| Lon    | Longitude where sample was taken |
+| MRGID    | List of MarineRegion ID's that contain the sample location |
+| Aphia_ID    | Worms ID associated with "Classification" |
+| Status    | Invasiveness status from WRIMS. Derived from AphiaID and location |
+| ----------- | ----------- |
 
 ## Human Readable Summary
 
