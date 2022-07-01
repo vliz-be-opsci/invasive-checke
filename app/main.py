@@ -9,7 +9,7 @@ import traceback
 import pandas as pd 
 import functools
 #--- Custom libs ---
-from invasive_checker import invasive_checker
+from invasive_checker import invasive_checker, utils
 
 '''
 This APP takes an input csv file and checks each row of the 
@@ -35,45 +35,52 @@ def process_input_row(row, aphia_checker):
     get locations
     get invasiveness
     '''
-    # log.info('Processing row {0}'.format(row.Name) )
+    log.info('Processing row {0}'.format(row.name) )
+    log.debug('row: {0}'.format(row))
     sciname = row.get('classification')
-    lon = row.get('lon',-64)
-    lat = row.get('lat',-45)
+    lon = row.get('sampleLongitude',0)
+    lat = row.get('sampleLatitude',0)
 
     if lat == 0 and lon == 0:
-        log.warning('Sample from Null Island!')
+        log.warning('Sample from Null Island! Lat=Lon=0')
 
     aphia_json = aphia_checker.get_aphia_from_lineage(sciname) 
-    aphia_id = aphia_json['AphiaID']
-    results, invasive_df = aphia_checker.check_aphia(lon, lat, aphia_id,source='worms')
-    if (results is not None):
-        item_dict = results
-    else: 
-        item_dict = {}
-        
-    if (invasive_df is not None):
-        invasive_dict = invasive_df.to_dict(orient='records')
-    else: 
-        invasive_dict = {}
-# derived_status = {  'Status':status,
-#                             'Within':mrgid,
-#                             'Nearest_Native_MRGID': None,
-#                             'Nearest_Introduced_MRGID': None,
-#                             'Nearest_Prev_Recorded_MRGID': None,
-#                             }
-    # to_rvlab
-    row['WRIMS Status'] = results.get('Status')
-    row['Sample within MRGID'] = results.get('Within')
-    row['Details'] = json.dumps(invasive_dict, indent=2)
+    if aphia_json is not None:
+        aphia_id = aphia_json.get('AphiaID')
+        sci_name = aphia_json.get('scientificname')
+        sci_rank = aphia_json.get('rank')
+    else:
+        aphia_id = 'No Match'
+        sci_name = 'No Match'
+        sci_rank = 'No Match'
 
+    if row['isNegativeControlGene']:
+        log.warning('Sample is Negative Control: not bothering with invasiveness check...')
+    elif aphia_id is not None:
+        results, invasive_df = aphia_checker.check_aphia(lon, lat, aphia_id,source='worms')
+        if (results is not None): 
+            wrims_status = results.get('Status',['Unrecorded'])
+            within = results.get('Within',['None'])
+        else: 
+            wrims_status = ['Unrecorded']
+            within = ['None']
+            
+        if (invasive_df is not None):
+            invasive_dict = invasive_df.to_dict(orient='records')
+        else: 
+            invasive_dict = {}
+
+        # to_rvlab
+        row['Aphia_ID'] = aphia_id
+        row['Worms SciName'] = sci_name
+        row['Worms SciName Rank'] = sci_rank
+        row['WRIMS Status at Sample Location'] = wrims_status
+        row['MarineRegions with known occurrence at Sample Location'] = within
+
+        # row['Details'] = json.dumps(invasive_dict, indent=2)
     return row
- 
-def make_otu_unique(df):
-    '''
-    Make OTU's unique for the rvlab
-    '''
 
-def do_work(input_file, output_folder, cfg):
+def do_work(input_file, output_folder, meta_file, cfg):
     '''
     The meat and potatoes
 
@@ -92,40 +99,65 @@ def do_work(input_file, output_folder, cfg):
         - classification.csv
 
     '''
-    meta_file = cfg.get('METAFILE')
-    log.info('Input file: {0}'.format(input_file))
-    log.info('Output folder: {0}'.format(output_folder))
-    log.info('Input metadata file: {0}'.format(json.dumps(meta_file, indent=2)))
-    log.info('Extra config: {0}'.format(json.dumps(cfg, indent=2)))
-
-    aphia_checker = invasive_checker.Aphia_Checker()
-
+    log.info('  -Preparing data...')
     worms_df = pd.read_csv(input_file, sep = cfg.get('SEP'))
-    worms_df = worms_df.apply(lambda row: process_input_row(row, aphia_checker), axis=1)
+    worms_df = clean_up_dataframes(worms_df, cfg)
 
-    # Write CSV containing all data:
-    filepath = os.path.join(output_folder, 'classification.csv')
+    worms_df_unpivot = pd.melt(worms_df, id_vars=['classification','OTU'],var_name='AccessionID', value_name='Count')
+    meta_df = pd.read_csv(meta_file) 
+    sample_df = utils.get_sample_location_df(worms_df_unpivot.AccessionID.unique(),meta_df)
+    worms_df_unpivot = pd.merge(worms_df_unpivot,sample_df,how="left",left_on='AccessionID',right_on='AccessionNumber')
+    
+    worms_df_unpivot.to_csv('/tmp/tests/output/unpivot.csv',index=False)
+    log.info('  -Looping through rows...')
+    aphia_checker = invasive_checker.Aphia_Checker()
+    wrims_df = worms_df_unpivot.apply(lambda row: process_input_row(row, aphia_checker), axis=1)
+    wrims_df.to_csv('/tmp/tests/output/wrims_df.csv',index=False)
+
+    # Clean up table
+    wrims_df = wrims_df.drop('AccessionNumber',axis=1)
+
+    # Write input + aphia file
+    aphia_df = pd.merge(worms_df,wrims_df[['classification','Aphia_ID']],how="left",on='classification')
+    aphia_df = aphia_df.drop_duplicates()
+    aphia_filepath = os.path.join(output_folder, cfg.get('WORMS_OUTPUT_FILE'))
+    
+    if aphia_df['OTU'].is_unique:
+        log.info('Writing worms.csv classification file to {0}'.format( aphia_filepath))
+        aphia_df.to_csv(aphia_filepath,sep = cfg.get('SEP'),index=False)
+    else:
+        log.warning('Non-unique OTU column. Will add suffix to duplicate OTUs...') 
+
+        aphia_df['duplicate_otu'] = aphia_df['OTU'].duplicated()
+        aphia_df['duplicate_count'] = aphia_df.groupby(aphia_df.OTU).cumcount().values
+        aphia_df['OTU'] =  aphia_df.apply(lambda row: row['OTU'] + '_' + str(row['duplicate_count']) if row['duplicate_otu'] else row['OTU'],axis=1)
+        aphia_df.drop(['duplicate_otu','duplicate_count'],axis=1,inplace=True)
+        log.info('Writing worms.csv classification file to {0}'.format( aphia_filepath))
+        aphia_df.to_csv(aphia_filepath,sep = cfg.get('SEP'),index=False)
+
+    # Write CSV containing classification data:
+    filepath = os.path.join(output_folder, cfg.get('CLASS_OUTPUT_FILE'))
     log.info('Writing full classification file to {0}'.format( filepath))
-    worms_df.to_csv(filepath)
+    wrims_df = wrims_df[wrims_df['Count'] > 0]
+    wrims_df.to_csv(filepath,index=False)
 
-    # Write one CSV per status type (Introduced, Native, Holotype etc)
-    # status_types = worms_df['WRIMS Status'].unique() 
-    # for status in status_types:
-    #     filepath = os.path.join(output_folder, 'classification_' + str(status) + '.csv')
-    #     log.info('Writing {0} classification file to {1}'.format(status, filepath))
-    #     status_df = worms_df[worms_df['WRIMS Status'] == status]
-    #     status_df.to_csv(filepath)
+# take a dataframe and change several column names to match column names defined in the cfg file
+def clean_up_dataframes(df, cfg):
 
-    # # Write to_rvlab TSV file 
-    # worms_df.groupby(df['OTU'])\
-    #   .cumcount()\
-    #   .astype(str)\
-    #   .str.replace('0', '')\
-    #   .values
-
-    # # Write metadata file
-    # meta_df  = pd.read_csv(meta_file)
+    otu_col_name = cfg.get('OTU_COL_NAME')
+    class_col_name = cfg.get('CLASS_COL_NAME')
+    log.info(df.columns)
  
+    # df['classification'] = df[class_col_name]
+    # df['OTU'] = df[otu_col_name]
+    
+    df.rename(columns={class_col_name:'classification',
+                           otu_col_name: 'OTU'}, inplace=True)
+    df = df.drop(['location_id','aphia_id'], axis=1, errors='ignore')
+    log.info(df.columns)
+    log.info('Done preparing data...')
+    
+    return df
 
 def get_config():
     '''
@@ -134,20 +166,29 @@ def get_config():
     cfg = { 'LLEVEL':os.getenv('LLEVEL', 'INFO'),
             'ID_SOURCE':os.getenv('ID_SOURCE', 'sciname'),
             'METAFILE':os.getenv('METAFILE', 'INFO'),
-            'SEP':os.getenv('SEP', '\t'),}
+            'SEP':os.getenv('SEP', '\t'),
+            'OTU_COL_NAME':os.getenv('OTU_COL_NAME', 'OTU'),
+            'CLASS_COL_NAME':os.getenv('CLASS_COL_NAME', 'classification'),
+            'CLASS_OUTPUT_FILE':os.getenv('CLASS_OUTPUT_FILE', 'classification.csv'),
+            'WORMS_OUTPUT_FILE':os.getenv('WORMS_OUTPUT_FILE', 'worms.csv'),}
+
 
     return cfg
 
 def main(args):
     '''
-    Setup logging, and args, then "do_work" via a schedular
+    Setup logging, and args, then "do_work" via a scheduler
     '''
-    loglevel = os.getenv('LLEVEL', default='INFO')
+    loglevel = args.loglevel
     logging.basicConfig(format='%(asctime)s - %(levelname)s - %(name)s - %(message)s',
                         level=getattr(logging, loglevel))    
     try: 
         cfg = get_config() 
-        do_work(args.input_file, args.output_folder, cfg)
+        log.info('Input file: {0}'.format(args.input_file))
+        log.info('Output folder: {0}'.format(args.output_folder))
+        log.info('Input metadata File: {0}'.format(args.meta_file))
+        log.info('Extra config: {0}'.format(json.dumps(cfg, indent=2)))
+        do_work(args.input_file, args.output_folder, args.meta_file, cfg)
     except (KeyboardInterrupt, SystemExit):
         log.warning('Exiting script...')
         pass
@@ -167,6 +208,9 @@ if __name__ == "__main__":
     PARSER.add_argument(
         '-i', '--input_file', 
         help="Path to input csv file.")
+    PARSER.add_argument(
+        '-m', '--meta_file', 
+        help="Path to sample metadata csv file.")
     PARSER.add_argument(
         '-o', '--output_folder', default='/tmp/',
         help="Path to folder to write output files.")

@@ -26,28 +26,21 @@ log = logging.getLogger('invasive_checker')
 
 class Aphia_Checker : 
     def __init__(self):
-        log.debug('Inititialising...')
-        # self.geom_store = {} # Removed cache, using functools.cache instead
-        self.cache_persist_period = int(os.getenv('CACHE_PERIOD',default=7))
+        log.debug('Inititialising...') 
     
-    def derive_status(self, sample_point, details_gdf, buffer):
+    def derive_status(self, details_gdf):
         '''
         Provide some human readable results...
         '''
-        log.debug(f'Preparing results...')
-
-        # sample_closeto_MR = (details_gdf.distance_to_distribution < buffer).any()
-
-        # MR_introduced = len(introduced_rows[(introduced_rows['contains_sample_point'] == True)].index) > 0
-        # MR_dist_introduced = min(introduced_rows.distance_to_distribution, default="No known 'introduced' locations")
-        # closest_MR = introduced_rows[introduced_rows.distance_to_distribution == introduced_rows.distance_to_distribution.min()]
-        # closest_distance = self.calc_distance(closest_MR, sample_point) 
+        log.debug(f'Preparing results...') 
  
         if details_gdf.contains_sample_point.any():
             # The organism has been recorded near the sample location
             containing_gdf = details_gdf[details_gdf['contains_sample_point'] == True]
-            status = containing_gdf['establishmentMeans'].unique() 
-            mrgid =  containing_gdf['locationID'].unique() 
+
+            status_combo = containing_gdf[['establishmentMeans','locationID']].drop_duplicates() 
+            status = status_combo['establishmentMeans'].values
+            mrgid = status_combo['locationID'].values
         else:
             # The organism has NOT been recorded near the sample location
             status = ["Unrecorded"]
@@ -58,19 +51,7 @@ class Aphia_Checker :
                             'Nearest_Native_MRGID': None,
                             'Nearest_Introduced_MRGID': None,
                             'Nearest_Prev_Recorded_MRGID': None,
-                            }
-        
-        # human_readable_results = {'aphia_id': aphia_id,
-        #                           'sample location [WKT]': sample_point.wkt,
-        #                           'sample location within aphia distibution': bool(sample_within_MR),
-        #                           'sample location within <buffer> of aphia distribution': bool(sample_closeto_MR),
-        #                           'buffer [deg]': buffer,  
-        #                           'species known to be introduced at sample location': bool(MR_introduced),
-        #                           'nearest introduced location': closest_MR.locality.values.tolist(),
-        #                           'distance [km] to nearest introduced location': closest_distance,
-        #                           'distance [deg] to nearest introduced location':MR_dist_introduced,
-        #                           'nearest introduced MRGID': closest_MR.MRGID.values.tolist(),
-        #                           'AphiaDistribution URL':this_aphia_dist_url}
+                            } 
             
         return derived_status 
 
@@ -89,8 +70,7 @@ class Aphia_Checker :
         '''
         
         log.debug(f'Received request for {id} for location {lon}/{lat}:buffer={buffer}')
-        sample_point = Point(lon,lat)
-
+        
         # Get Aphia status, geoms associated with the aphia and whether the sample location is 
         # inside those geoms or not. 
         # =============
@@ -106,86 +86,97 @@ class Aphia_Checker :
                                   'Error': 'No distribution found for this Aphia_ID'}
             return status_dict, None
         
-        log.debug(f'Fetching geom...')
-        this_aphia_df['geom'] = this_aphia_df.apply(lambda x: self.get_rdf_geom(x['MRGID']), axis=1)
-        log.debug(f'Doing GIS work...')
-        this_aphia_gdf = gpd.GeoDataFrame(this_aphia_df, geometry='geom')        
-        this_aphia_gdf['contains_sample_point'] = this_aphia_gdf.contains(sample_point)
+        log.debug(f'  -Fetching geom...')
+
+        # should combine all these steps into one cacheable one
+        if (lon is not None) and (lat is not None):
+            this_aphia_df['contains_sample_point'] = this_aphia_df.apply(lambda x: self.get_rdf_geom(x['MRGID'], lon, lat), axis=1)
+        else:
+            this_aphia_df['contains_sample_point'] = False
+
         # this_aphia_gdf['distance_to_distribution'] = this_aphia_gdf.distance(sample_point)
-        this_aphia_gdf.establishmentMeans.replace('Alien','Introduced',inplace=True)
+        this_aphia_df.establishmentMeans.replace('Alien','Introduced',inplace=True)
+        this_aphia_df.establishmentMeans.fillna('Recorded',inplace=True)
         
         # =============
         # Apply some human logic to determine whether the above results are of interest or not
         # =============
-        status_dict = self.derive_status(sample_point, this_aphia_gdf, buffer)
+        log.debug(f'  -Applying logic...')
+        status_dict = self.derive_status(this_aphia_df)
 
-        
-        
         # =============
         # Prep for returning to user
         #   - Drop geom column since it can get very big 
         #   - drop non-useful or confusing columns
         # =============
         # this_aphia_gdf = this_aphia_gdf[this_aphia_gdf['distance_to_distribution'] < buffer]
-        invasive_df = pd.DataFrame(this_aphia_gdf.drop(['geom'],axis=1))  
-        invasive_df = invasive_df.drop(['decimalLongitude', 
-                                        'decimalLatitude',
-                                        'recordStatus',
+        invasive_df = this_aphia_df.drop(['decimalLongitude', 
+                                        'decimalLatitude', 
                                         'higherGeography',
                                         'higherGeographyID'],axis=1)
         
         # =============
-        log.debug(f'Done:')
+        log.debug(f'  -Done:')
         log.debug(status_dict)
         return status_dict, invasive_df
     
+    # function that combines a list of shapely geoms into a single geometry
     @functools.cache
-    def get_rdf_geom(self, mrgid):
-        '''
-        Take single MRGID and return a single geom that's a combination of all geom's associated with that MRGID. 
-        Use some simple caching to speed things up. 
+    def retrieve_and_combine_geoms(self, mrgid):
+        log.debug('    -Getting RDF geom for {0}'.format(mrgid))
+        try:
+            mr_geom_request = f'https://marineregions.org/rest/getGazetteerGeometries.jsonld/{mrgid}/'
+            rdf = self.requester(mr_geom_request)
+            g = Graph()
+            g.parse(rdf.content, format='json-ld')
+            wkt_pred = rdflib.term.URIRef('http://www.opengis.net/ont/geosparql#asWKT')
 
-        Should be totally cacheable...
-        '''
-        # if mrgid in self.geom_store:
-        #     data_store = self.geom_store[mrgid]
-        #     single_geom = data_store['geom']
-        #     cache_datetime = data_store['store_date']
-        #     today = datetime.date.today()
-        #     if (today - cache_datetime).days > self.cache_persist_period:
-        #         log.info(f'MRGID {mrgid} geom is old. Throwing it out...')
-        #         data_store.pop[mrgid]
-        #     return single_geom
-        # else:
-        mr_geom_request = f'https://marineregions.org/rest/getGazetteerGeometries.jsonld/{mrgid}/'
-        rdf = self.requester(mr_geom_request)
-        g = Graph()
-        g.parse(rdf.content, format='json-ld')
-        wkt_pred = rdflib.term.URIRef('http://www.opengis.net/ont/geosparql#asWKT')
+            geoms = []
+            for s, p, o in g: 
+                if p == wkt_pred:
+                    try:
+                        bad_wkt = o.n3()
+                        xx = re.search('^.*\>\s(.*)\".*$', bad_wkt)
+                        good_wkt = xx[1]
+                        geoms.append(shapely.wkt.loads(good_wkt))
+                    except:
+                        pass
 
-        geoms = []
-        for s, p, o in g: 
-            if p == wkt_pred:
-                try:
-                    bad_wkt = o.n3()
-                    xx = re.search('^.*\>\s(.*)\".*$', bad_wkt)
-                    good_wkt = xx[1]
-                    geoms.append(shapely.wkt.loads(good_wkt))
-                except:
-                    pass
+            num_geoms = len(geoms) 
+        except Exception as err:
+            log.warning('Problem in rdf geom: {0}'.format(err))
+            geoms = None
 
-        num_geoms = len(geoms) 
         if num_geoms > 20:
             log.warning(f'  -Too many geoms: {num_geoms} geoms for {mrgid}. Only using first 20...')
             geoms = geoms[0:19]
         else:
             log.debug(f'  -combining {num_geoms} geoms for {mrgid}')
-        single_geom = shapely.ops.unary_union(geoms)
 
+        if len(geoms) == 0:
+            return None
+        elif len(geoms) == 1:
+            return geoms[0]
+        else:
+            return shapely.ops.unary_union(geoms)
 
-        # self.geom_store[mrgid] = {'geom':single_geom,
-        #                             'store_date': datetime.date.today()}
-        return single_geom
+    @functools.cache
+    def get_rdf_geom(self, mrgid, lon, lat):
+        '''
+        Take single MRGID and return a single geom that's a combination of all geom's associated with that MRGID. 
+        Use some simple caching to speed things up. 
+
+        Should be totally cacheable...
+        ''' 
+        
+        single_geom = self.retrieve_and_combine_geoms(mrgid)
+        sample_point = Point(lon,lat)
+
+        if single_geom is None:
+            return False
+        else:
+            contains_sample = single_geom.contains(sample_point) 
+            return contains_sample
 
 
     def get_external_status(self, external_id, id_source):
@@ -214,18 +205,18 @@ class Aphia_Checker :
                         'gisd': 'Global Invasive Species Database'}
 
         if id_source not in id_sources:
-            log.warning(f'Unkown external source: {id_source}.')
+            log.warning(f'Unknown external source: {id_source}.')
             return None 
         try:
             aphia_url = f'https://marinespecies.org/rest/AphiaRecordByExternalID/{external_id}?type={id_source}'
-            aphia_return =  self.requester(aphia_url).json()
+            aphia_return =  self.requester(aphia_url)
             if aphia_return is not None:
-                aphia_id = aphia_return['AphiaID']
+                aphia_id = aphia_return.json()['AphiaID']
                 return aphia_id
             else:
                 return None
         except Exception as err:
-            log.warning(f'Error retriving distribution for {id_source}: {external_id}')
+            log.warning(f'Error retrieving distribution for {id_source}: {external_id}')
             log.warning(err)
             return None 
 
@@ -236,7 +227,11 @@ class Aphia_Checker :
         '''
         wrms_distribution = f'http://www.marinespecies.org/rest/AphiaDistributionsByAphiaID/{aphia_id}'
         try:
-            wrms_dist = self.requester(wrms_distribution).json()
+            req_return = self.requester(wrms_distribution)
+            if req_return is not None:
+                wrms_dist = req_return.json()
+            else:
+                return None,None
 
             if len(wrms_dist) == 0 :
                 log.warning(f'No distribution for Aphia {aphia_id}')
@@ -283,41 +278,31 @@ class Aphia_Checker :
         '''
         Do a safe request and return the result.
         '''
+        log.debug('    -Doing URL request: {0}'.format(url))
         reply = requests.get(url)
         if reply.status_code == 200:
             try:
                 r = reply
             except Exception as error:
                 log.error(error)
-                raise Exception("No known distribution")
-                r = []
+                r = None
             return r
         elif reply.status_code == 204:
-            log.warning('No items found...')
+            log.warning('No Content for {0}...'.format(url))
             return None
         else: 
             # Something not right with the request...
             log.warning(reply)
             log.warning(reply.text)
-            return []
-
-    
-    def clear_cache(self):
-        '''
-        Dump the stored dicts. Forces next call to be retrieved from web.
-        '''
-        cache_len = len(self.geom_store)
-        xx = f'Clearing cache: dumping {cache_len} geoms...'
-        log.info(xx)
-        self.geom_store = {} 
-        return {'message':xx}
-    
+            return None
+ 
     def get_aphia_from_lineage(self, tax_string, sep = ';'):
         '''
         Given a taxon lineage string (Eukaryota;Chordata;Ascidiacea;Enterogona;Ascidiidae;Ascidiella;Ascidiella scabra)
         get the aphia_id for the lowest level.
         '''
         tax_lineage = tax_string.split(sep)
+        log.debug('Checking taxon: {0}'.format(tax_lineage))
         req_return = None
         while req_return is None:
             try:
@@ -325,6 +310,7 @@ class Aphia_Checker :
                 tax_lineage.pop(-1)
             except IndexError:
                 log.warning('Reached end of taxon lineage without success...')
+                break
         return req_return
 
     def get_aphia_from_taxname(self, taxa_name):
@@ -337,8 +323,11 @@ class Aphia_Checker :
         try:
             req_return = self.requester(taxamatch_url)
 
-            if req_return.status_code == 204 :
-                log.warning(f'No aphia for Aphia {taxa_name} found...')
+            if (req_return is None):
+                log.warning(f'No AphiaID for taxname {taxa_name} found...')
+                return None
+            elif (req_return.status_code == 204):
+                log.warning(f'No AphiaID for taxname {taxa_name} found...')
                 return None
             elif req_return.status_code == 200:
                 log.debug(f'Returns: {req_return}') 
@@ -349,6 +338,7 @@ class Aphia_Checker :
                 log.warning(req_return)
                 return None
         except Exception as err:
-            log.warning(f'Error retriving aphia_id for sci-name {taxa_name}')
+            log.warning(f'Error retrieving aphia_id for sci-name: {taxamatch_url}')
             log.warning(err)
             return None
+ 

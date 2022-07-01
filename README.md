@@ -27,16 +27,16 @@ The input PEMA file seems to be an combination of a pivoted table with metadata 
 
 | New Column  | Description |
 | ----------- | ----------- |
-| OTU         | Same data as old column |
+| OTU         | OTU ID |
 | Sequence    | Sequence ID |
-| Count    | Cell value for (OTU,Sequence) |
-| Classification    | Sci-name |
+| Count    | Unpivoted count value for (OTU,Sequence) |
+| Classification    | Scientific Taxonomic lineage |
 | Lat    | Latitude where sample was taken |
 | Lon    | Longitude where sample was taken |
 | MRGID    | List of MarineRegion ID's that contain the sample location |
 | Aphia_ID    | Worms ID associated with "Classification" |
 | Status    | Invasiveness status from WRIMS. Derived from AphiaID and location |
-| ----------- | ----------- |
+
 
 ## Human Readable Summary
 
