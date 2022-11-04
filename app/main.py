@@ -108,11 +108,13 @@ def do_work(input_file, output_folder, meta_file, cfg):
     sample_df = utils.get_sample_location_df(worms_df_unpivot.AccessionID.unique(),meta_df)
     worms_df_unpivot = pd.merge(worms_df_unpivot,sample_df,how="left",left_on='AccessionID',right_on='AccessionNumber')
     
-    worms_df_unpivot.to_csv('/tmp/tests/output/unpivot.csv',index=False)
+    os.makedirs('/mnt/tests/output/', exist_ok=True)
+
+    worms_df_unpivot.to_csv('/mnt/tests/output/unpivot.csv',index=False)
     log.info('  -Looping through rows...')
     aphia_checker = invasive_checker.Aphia_Checker()
     wrims_df = worms_df_unpivot.apply(lambda row: process_input_row(row, aphia_checker), axis=1)
-    wrims_df.to_csv('/tmp/tests/output/wrims_df.csv',index=False)
+    wrims_df.to_csv('/mnt/tests/output/wrims_df.csv',index=False)
 
     # Clean up table
     wrims_df = wrims_df.drop('AccessionNumber',axis=1)
@@ -212,7 +214,7 @@ if __name__ == "__main__":
         '-m', '--meta_file', 
         help="Path to sample metadata csv file.")
     PARSER.add_argument(
-        '-o', '--output_folder', default='/tmp/',
+        '-o', '--output_folder', default='/mnt/',
         help="Path to folder to write output files.")
     ARGS = PARSER.parse_args()
     try:

@@ -4,11 +4,11 @@
 
 from setuptools import setup, find_packages
 
-with open('README.rst') as readme_file:
+with open('README.md') as readme_file:
     readme = readme_file.read()
 
-with open('HISTORY.rst') as history_file:
-    history = history_file.read()
+# with open('HISTORY.rst') as history_file:
+    # history = history_file.read()
 
 requirements = [ ]
 
@@ -29,7 +29,7 @@ setup(
     ],
     description="Use WRIMS + MarineRegions to determine if a given organism+location is invasive or not.",
     install_requires=requirements,
-    long_description=readme + '\n\n' + history,
+    long_description=readme,
     include_package_data=True,
     keywords='invasive_checker',
     name='invasive_checker',
