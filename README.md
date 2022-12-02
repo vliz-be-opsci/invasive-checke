@@ -183,3 +183,10 @@ locality	locationID	typeStatus	establishmentMeans	qualityStatus	MRGID	contains_s
 8	Dutch Exclusive Economic Zone	http://marineregions.org/mrgid/5668	None	None	unreviewed	5668	False	0.342922
 
 ```
+
+## Build docker image
+
+```bash
+docker build --no-cache -t gitlab.lifewatch.dev:5050/lfw002-khaos/workflow-docker-images/arms-wrims:latest .
+```
+
