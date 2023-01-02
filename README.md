@@ -9,6 +9,33 @@ Use WRIMS + MarineRegions to determine if a given organism+location is invasive 
 
 One point: up until now the species have been called "invasive". There is a technical difference between "Alien", "Introduced", and "Invasive" organisms. The returns from this system are known to be "introduced" and may, or may not, be "invasive". 
 
+## Git Config
+This project is hosted in two places:
+*Upstream*: https://gitlab.lifewatch.dev/Meyer/invasive_checker
+*Origin*: https://github.com/vliz-be-opsci/invasive-checker
+
+The thinking is that this allows OpSci developers to quickly edit and create code before pushing a functional release "upstream" to the Lifewatch server where it can be integrated into a processing chain. 
+
+Check that your /path/to/repo/.git/config file looks something like:
+```
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+[remote "origin"]
+	url = git@gitlab.lifewatch.dev:Meyer/invasive_checker.git
+	url = git@github.com:vliz-be-opsci/invasive-checker.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main
+[branch "dev"]
+	remote = origin
+	merge = refs/heads/dev
+```
+
+
 
 ## Getting running in Docker
 A docker-compose file and sample.env file are provided. Together they deploy a container that contains a REST API with Swagger documentation. Currently there are only a few REST endpoints and they'll look like this when running on a local system with the default .env file: 
