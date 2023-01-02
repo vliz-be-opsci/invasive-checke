@@ -24,9 +24,10 @@ Check that your /path/to/repo/.git/config file looks something like:
 	bare = false
 	logallrefupdates = true
 [remote "origin"]
-	url = git@gitlab.lifewatch.dev:Meyer/invasive_checker.git
 	url = git@github.com:vliz-be-opsci/invasive-checker.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "upstream"]
+        url = git@gitlab.lifewatch.dev:Meyer/invasive_checker.git
 [branch "main"]
 	remote = origin
 	merge = refs/heads/main
