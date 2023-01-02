@@ -12,7 +12,7 @@ services:
       - .env  
     volumes:
       - ./tests/:/tmp/tests/
-    command: python /code/app/main.py -l INFO -i /tmp/tests/test_data/final_table.csv -m /tmp/tests/test_data/ARMS_Samples_IJI2.csv -o /tmp/tests/output/
+    command: python /code/app/main.py -l DEBUG -i /tmp/tests/test_Dec_2022/final_table.tsv -m /tmp/tests/test_Dec_2022/ARMS4Tesseract_PEMA_data.csv -o /tmp/tests/test_Dec_2022/output/
     logging:
       driver: json-file
       options:

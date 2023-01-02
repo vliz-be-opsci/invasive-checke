@@ -37,14 +37,14 @@ def get_sample_location_df(AccessionIDs, meta_df):
             else:
                 longitude = meta_row.loc[meta_row.index].longitude.values[0]
                 latitude = meta_row.loc[meta_row.index].latitude.values[0]
-                material_id = meta_row.loc[meta_row.index].MaterialSample_ID.values[0] 
+                material_id = meta_row.loc[meta_row.index].Sample_ID.values[0] 
 
         row[sample_id] = {'AccessionNumber':sample_id,
                            'isNegativeControlGene':negative_control,
                            'GeneType':gene,
-                           'sampleLatitude':latitude,
-                           'sampleLongitude':longitude,
-                           'MaterialSample_ID': material_id,
+                           'latitude':latitude,
+                           'longitude':longitude,
+                           'Sample_ID': material_id,
                            }
     my_df = pd.DataFrame(row).T
     return my_df
