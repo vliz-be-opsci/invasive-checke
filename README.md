@@ -11,8 +11,8 @@ One point: up until now the species have been called "invasive". There is a tech
 
 ## Git Config
 This project is hosted in two places:
-*Upstream*: https://gitlab.lifewatch.dev/Meyer/invasive_checker
-*Origin*: https://github.com/vliz-be-opsci/invasive-checker
+  - *Upstream*: https://gitlab.lifewatch.dev/Meyer/invasive_checker
+  - *Origin*: https://github.com/vliz-be-opsci/invasive-checker
 
 The thinking is that this allows OpSci developers to quickly edit and create code before pushing a functional release "upstream" to the Lifewatch server where it can be integrated into a processing chain. 
 
