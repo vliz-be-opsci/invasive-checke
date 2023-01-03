@@ -9,7 +9,7 @@ import traceback
 import pandas as pd 
 import functools
 #--- Custom libs ---
-from invasive_checker import invasive_checker, utils
+from invasive_checker import invasive_checker, utils 
 
 '''
 This APP takes an input csv file and checks each row of the 
@@ -26,7 +26,7 @@ Steps:
 '''
 log = logging.getLogger('main')  
 
-def process_input_row(row, aphia_checker):
+def process_input_row(row):
     '''
     Takes pandas/xarray input row and expands it with additional data
     from the invasive_checker lib.
@@ -38,13 +38,13 @@ def process_input_row(row, aphia_checker):
     log.info('Processing row {0}'.format(row.name) )
     log.debug('row: {0}'.format(row))
     sciname = row.get('classification')
-    lon = row.get('sampleLongitude',0)
-    lat = row.get('sampleLatitude',0)
+    lon = row.get('sampleLongitude') or row.get('Longitude') or row.get('longitude') or row.get('lon') or 0
+    lat = row.get('sampleLatitude') or row.get('Latitude') or row.get('latitude') or row.get('lat') or 0
 
     if lat == 0 and lon == 0:
         log.warning('Sample from Null Island! Lat=Lon=0')
 
-    aphia_json = aphia_checker.get_aphia_from_lineage(sciname) 
+    aphia_json = invasive_checker.get_aphia_from_lineage(sciname) 
     if aphia_json is not None:
         aphia_id = aphia_json.get('AphiaID')
         sci_name = aphia_json.get('scientificname')
@@ -57,7 +57,7 @@ def process_input_row(row, aphia_checker):
     if row['isNegativeControlGene']:
         log.warning('Sample is Negative Control: not bothering with invasiveness check...')
     elif aphia_id is not None:
-        results, invasive_df = aphia_checker.check_aphia(lon, lat, aphia_id,source='worms')
+        results, invasive_df = invasive_checker.check_aphia(lon, lat, aphia_id,source='worms')
         if (results is not None): 
             wrims_status = results.get('Status',['Unrecorded'])
             within = results.get('Within',['None'])
@@ -111,9 +111,8 @@ def do_work(input_file, output_folder, meta_file, cfg):
     os.makedirs('/mnt/tests/output/', exist_ok=True)
 
     worms_df_unpivot.to_csv('/mnt/tests/output/unpivot.csv',index=False)
-    log.info('  -Looping through rows...')
-    aphia_checker = invasive_checker.Aphia_Checker()
-    wrims_df = worms_df_unpivot.apply(lambda row: process_input_row(row, aphia_checker), axis=1)
+    log.info('  -Looping through rows...') 
+    wrims_df = worms_df_unpivot.apply(lambda row: process_input_row(row), axis=1)
     wrims_df.to_csv('/mnt/tests/output/wrims_df.csv',index=False)
 
     # Clean up table
@@ -167,14 +166,12 @@ def get_config():
     '''
     cfg = { 'LLEVEL':os.getenv('LLEVEL', 'INFO'),
             'ID_SOURCE':os.getenv('ID_SOURCE', 'sciname'),
-            'METAFILE':os.getenv('METAFILE', 'INFO'),
+            # 'METAFILE':os.getenv('METAFILE', 'INFO'),
             'SEP':os.getenv('SEP', '\t'),
             'OTU_COL_NAME':os.getenv('OTU_COL_NAME', 'OTU'),
             'CLASS_COL_NAME':os.getenv('CLASS_COL_NAME', 'classification'),
             'CLASS_OUTPUT_FILE':os.getenv('CLASS_OUTPUT_FILE', 'classification.csv'),
             'WORMS_OUTPUT_FILE':os.getenv('WORMS_OUTPUT_FILE', 'worms.csv'),}
-
-
     return cfg
 
 def main(args):
