@@ -1,0 +1,355 @@
+classification,OTU,AccessionID,Count
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu61,ERR7125536,4
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 3,Otu60,ERR7125536,4
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Malacostraca;Nebalia;Nebalia (genus);Unknown Nebalia (genus) species 1,Otu63,ERR7125536,4
+Main genome;Eukaryota;Stramenopiles;Ochrophyta,Otu62,ERR7125536,4
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu65,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu64,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Branchiomma;Branchiomma (strain);sp. (Branchiomma (strain)),Otu67,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Enoplea;Enoplea (order);X (Enoplea (order)),Otu66,ERR7125536,0
+Main genome;Eukaryota;Archaeplastida;Rhodophyta;Florideophyceae;Gigartinales;Gigartinales (order);X (Gigartinales (order)),Otu69,ERR7125536,3
+Main genome;Eukaryota;Alveolata;Dinoflagellata,Otu68,ERR7125536,3
+Main genome;Eukaryota;Alveolata;Apicomplexa;Gregarinomorphea;Gregarinomorphea (class);X (Gregarinomorphea (class));Gregarinomorphea (X (Gregarinomorphea (class)));XX (Gregarinomorphea (X (Gregarinomorphea (class))));Selenidium1;Selenidium1 (strain);sensimae,Otu72,ERR7125536,3
+Main genome;Eukaryota;Archaeplastida;Streptophyta;Embryophyceae;Embryophyceae (class);X (Embryophyceae (class));Embryophyceae (X (Embryophyceae (class)));XX (Embryophyceae (X (Embryophyceae (class)))),Otu73,ERR7125536,3
+Main genome;Eukaryota;Opisthokonta;Fungi,Otu70,ERR7125536,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Capitella;Capitella (strain);teleta,Otu71,ERR7125536,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca,Otu76,ERR7125536,0
+No hits,Otu77,ERR7125536,0
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae;Polar-centric-Mediophyceae (genus);X (Polar-centric-Mediophyceae (genus));Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus)));X (Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus))));sp. (X (Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus))))),Otu74,ERR7125536,3
+Main genome;Eukaryota;Rhizaria;Cercozoa;Endomyxa-Phytomyxea;Phagomyxida;Phagomyxidae;Phagomyxa;Unknown Phagomyxa genus 1,Otu75,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Enoplea;Enoplea (order);Unknown Enoplea (order) family 1,Otu78,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Unknown Crustacea order 1,Otu79,ERR7125536,0
+Main genome;Eukaryota;Stramenopiles;Pseudofungi;Oomycota;Oomycota (class);X (Oomycota (class));Oomycota (X (Oomycota (class)));XX (Oomycota (X (Oomycota (class))));Oomycota (XX (Oomycota (X (Oomycota (class)))));XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))));Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class)))))));XXX (Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))))));sp. (XXX (Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))))))),Otu49,ERR7125536,5
+Main genome;Eukaryota;Opisthokonta;Fungi,Otu48,ERR7125536,6
+No hits,Otu47,ERR7125536,6
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Maxillopoda (family);X (Maxillopoda (family));Maxillopoda (X (Maxillopoda (family)));X (Maxillopoda (X (Maxillopoda (family))));sp. (X (Maxillopoda (X (Maxillopoda (family))))),Otu46,ERR7125536,9
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae;Thalassiosira;Thalassiosira (species);Unknown Thalassiosira (species) strain 1,Otu45,ERR7125536,6
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Ostreoida,Otu44,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Caenogastropoda;Unknown Caenogastropoda family 1,Otu43,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Euryte;Euryte (genus);sp. (Euryte (genus)),Otu42,ERR7125536,9
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Bryocamptus;Unknown Bryocamptus genus 1,Otu41,ERR7125536,7
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Chelicerata;Pycnogonida;Ammothella;Ammothella (genus);spinifera (Ammothella (genus)),Otu40,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Annelida (XX (Annelida (X (Annelida (class)))));XXX (Annelida (XX (Annelida (X (Annelida (class))))));Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class)))))));XXX (Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class))))))));sp. (XXX (Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class))))))))),Otu58,ERR7125536,9
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Heteroconchia;Hiatella;Hiatella (genus),Otu59,ERR7125536,4
+Main genome;Eukaryota;Apusozoa;Hilomonadea;Planomonadida;Planomonadidae;Planomonadidae (order);Unknown Planomonadidae (order) family 1,Otu50,ERR7125536,5
+No hits,Otu51,ERR7125536,5
+Main genome;Eukaryota;Opisthokonta;Fungi;Ascomycota;Pezizomycotina;Sordariomycetes,Otu52,ERR7125536,5
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Chromadorea;Chromadorea (order);Unknown Chromadorea (order) family 1,Otu53,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu54,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu55,ERR7125536,0
+Main genome;Eukaryota;Alveolata;Ciliophora;Oligohymenophorea;Peritrichia;Zoothamniidae;Zoothamnium;Zoothamnium (genus),Otu56,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Craniata;Craniata (class);X (Craniata (class));Teleostei,Otu57,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class)))),Otu8,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Branchiosyllis;Branchiosyllis (strain);exilis,Otu9,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nemertea;Nemertea (class);X (Nemertea (class));Nemertea (X (Nemertea (class)));XX (Nemertea (X (Nemertea (class))));Cephalothrix;Cephalothrix (strain),Otu6,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu7,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 1,Otu4,ERR7125536,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Sphaerosyllis;Sphaerosyllis (strain);pirifera,Otu5,ERR7125536,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu2,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu3,ERR7125536,7
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Protula;Protula (strain);sp. (Protula (strain)),Otu1,ERR7125536,111
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Hydrozoa,Otu29,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Craniata;Craniata (class);X (Craniata (class)),Otu28,ERR7125536,12
+Main genome;Eukaryota;Opisthokonta;Metazoa;Porifera;Porifera (class);X (Porifera (class));Calcarea,Otu25,ERR7125536,1
+Main genome;Eukaryota,Otu24,ERR7125536,14
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 2,Otu27,ERR7125536,6
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu26,ERR7125536,32
+Main genome;Eukaryota;Opisthokonta;Metazoa;Echinodermata;Echinodermata (class);X (Echinodermata (class));Echinodermata (X (Echinodermata (class)));XX (Echinodermata (X (Echinodermata (class)))),Otu21,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Orbinia;Orbinia (strain);swani,Otu20,ERR7125536,20
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu23,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 1,Otu22,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Sabellaria;Sabellaria (strain),Otu116,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu117,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu114,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Unknown X (Urochordata (class)) family 2,Otu115,ERR7125536,0
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae,Otu112,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Maxillopoda (family);X (Maxillopoda (family));Maxillopoda (X (Maxillopoda (family)));X (Maxillopoda (X (Maxillopoda (family))));sp. (X (Maxillopoda (X (Maxillopoda (family))))),Otu113,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu110,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu111,ERR7125536,0
+No hits,Otu118,ERR7125536,0
+Main genome;Eukaryota,Otu38,ERR7125536,8
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu39,ERR7125536,8
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 3,Otu36,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Ostreoida;Unknown Ostreoida family 1,Otu37,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Anthozoa,Otu34,ERR7125536,2
+Main genome;Eukaryota;Alveolata;Ciliophora;Spirotrichea;Hypotrichia,Otu35,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda,Otu32,ERR7125536,10
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 2,Otu33,ERR7125536,9
+No hits,Otu30,ERR7125536,0
+Main genome;Eukaryota;Alveolata;Ciliophora;Spirotrichea;Choreotrichida;Strobilidiidae;A (Strobilidiidae);Rimostrombidium;A (Rimostrombidium);Rimostrombidium (A (Rimostrombidium));A (Rimostrombidium (A (Rimostrombidium)));sp. (A (Rimostrombidium (A (Rimostrombidium)))),Otu31,ERR7125536,14
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu105,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu104,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Unknown X (Urochordata (class)) family 1,Otu107,ERR7125536,0
+Main genome;Eukaryota;Alveolata;Ciliophora;Heterotrichea;Heterotrichea (class);X (Heterotrichea (class));Folliculinidae;Folliculinidae (genus);X (Folliculinidae (genus));Folliculinidae (X (Folliculinidae (genus)));X (Folliculinidae (X (Folliculinidae (genus))));sp. (X (Folliculinidae (X (Folliculinidae (genus))))),Otu106,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Echinodermata;Echinodermata (class);X (Echinodermata (class));Echinodermata (X (Echinodermata (class)));XX (Echinodermata (X (Echinodermata (class))));Echinodermata (XX (Echinodermata (X (Echinodermata (class)))));XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))));Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class)))))));XXX (Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))))));sp. (XXX (Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))))))),Otu101,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Limoida;Lima;Lima (genus);lima (Lima (genus)),Otu100,ERR7125536,0
+Main genome;Eukaryota;Archaeplastida;Chlorophyta;Ulvophyceae;Bryopsidales;Ostreobiaceae;Ostreobium (Ostreobiaceae);Ostreobium (Ostreobium (Ostreobiaceae));Unknown Ostreobium (Ostreobium (Ostreobiaceae)) species 1,Otu103,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda,Otu102,ERR7125536,0
+No hits,Otu109,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Chelicerata;Pycnogonida,Otu108,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class)))),Otu83,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Caenogastropoda,Otu82,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Porifera;Porifera (class);X (Porifera (class));Demospongiae,Otu81,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Heterobranchia,Otu80,ERR7125536,0
+Main genome;Eukaryota;Archaeplastida;Chlorophyta;Trebouxiophyceae;Chlorellales;Chlorellales (order);X (Chlorellales (order)),Otu87,ERR7125536,2
+No hits,Otu86,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea;Unknown Ascidiacea genus 1,Otu85,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));Unknown Annelida (X (Annelida (class))) genus 1,Otu84,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Ostracoda;Howeina;Unknown Howeina genus 1,Otu89,ERR7125536,2
+No hits,Otu88,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Malacostraca,Otu14,ERR7125536,34
+Main genome;Eukaryota;Opisthokonta;Metazoa;Platyhelminthes;Turbellaria;Prolecithophora;Unknown Prolecithophora family 1,Otu15,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Salmacina;Salmacina (strain);sp. (Salmacina (strain)),Otu16,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Entoprocta;Entoprocta (class);X (Entoprocta (class));Entoprocta (X (Entoprocta (class)));XX (Entoprocta (X (Entoprocta (class))));Barentsia;Barentsia (strain),Otu17,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida;Musculus;Unknown Musculus genus 1,Otu10,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Platyhelminthes;Turbellaria;Polycladida;Stylochus;Stylochus (genus);orientalis (Stylochus (genus)),Otu11,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Notomastus;Notomastus (strain);latericeus,Otu12,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida;Adipicola;Adipicola (genus);longissima (Adipicola (genus)),Otu13,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Hydroides;Hydroides (strain);trivesiculosus,Otu18,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Arcoida,Otu19,ERR7125536,0
+No hits,Otu98,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu99,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Chromadorea;Chromadorea (order);Unknown Chromadorea (order) family 2,Otu94,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Salmacina;Salmacina (strain);sp. (Salmacina (strain)),Otu95,ERR7125536,0
+Main genome;Eukaryota;Stramenopiles;Sagenista;Labyrinthulomycetes;Labyrinthulida;Labyrinthulaceae;Aplanochytrium;Aplanochytrium (genus);sp. (Aplanochytrium (genus)),Otu96,ERR7125536,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Unknown X (Cnidaria (class)) family 1,Otu97,ERR7125536,0
+Main genome;Eukaryota,Otu90,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Verruca;Unknown Verruca genus 1,Otu91,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda,Otu92,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Harmothoe;Harmothoe (strain);imbricata (Harmothoe (strain)),Otu93,ERR7125536,2
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu61,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 3,Otu60,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Malacostraca;Nebalia;Nebalia (genus);Unknown Nebalia (genus) species 1,Otu63,ERR7125539,0
+Main genome;Eukaryota;Stramenopiles;Ochrophyta,Otu62,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu65,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu64,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Branchiomma;Branchiomma (strain);sp. (Branchiomma (strain)),Otu67,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Enoplea;Enoplea (order);X (Enoplea (order)),Otu66,ERR7125539,0
+Main genome;Eukaryota;Archaeplastida;Rhodophyta;Florideophyceae;Gigartinales;Gigartinales (order);X (Gigartinales (order)),Otu69,ERR7125539,0
+Main genome;Eukaryota;Alveolata;Dinoflagellata,Otu68,ERR7125539,0
+Main genome;Eukaryota;Alveolata;Apicomplexa;Gregarinomorphea;Gregarinomorphea (class);X (Gregarinomorphea (class));Gregarinomorphea (X (Gregarinomorphea (class)));XX (Gregarinomorphea (X (Gregarinomorphea (class))));Selenidium1;Selenidium1 (strain);sensimae,Otu72,ERR7125539,0
+Main genome;Eukaryota;Archaeplastida;Streptophyta;Embryophyceae;Embryophyceae (class);X (Embryophyceae (class));Embryophyceae (X (Embryophyceae (class)));XX (Embryophyceae (X (Embryophyceae (class)))),Otu73,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Fungi,Otu70,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Capitella;Capitella (strain);teleta,Otu71,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca,Otu76,ERR7125539,0
+No hits,Otu77,ERR7125539,0
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae;Polar-centric-Mediophyceae (genus);X (Polar-centric-Mediophyceae (genus));Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus)));X (Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus))));sp. (X (Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus))))),Otu74,ERR7125539,0
+Main genome;Eukaryota;Rhizaria;Cercozoa;Endomyxa-Phytomyxea;Phagomyxida;Phagomyxidae;Phagomyxa;Unknown Phagomyxa genus 1,Otu75,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Enoplea;Enoplea (order);Unknown Enoplea (order) family 1,Otu78,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Unknown Crustacea order 1,Otu79,ERR7125539,0
+Main genome;Eukaryota;Stramenopiles;Pseudofungi;Oomycota;Oomycota (class);X (Oomycota (class));Oomycota (X (Oomycota (class)));XX (Oomycota (X (Oomycota (class))));Oomycota (XX (Oomycota (X (Oomycota (class)))));XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))));Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class)))))));XXX (Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))))));sp. (XXX (Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))))))),Otu49,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Fungi,Otu48,ERR7125539,0
+No hits,Otu47,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Maxillopoda (family);X (Maxillopoda (family));Maxillopoda (X (Maxillopoda (family)));X (Maxillopoda (X (Maxillopoda (family))));sp. (X (Maxillopoda (X (Maxillopoda (family))))),Otu46,ERR7125539,0
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae;Thalassiosira;Thalassiosira (species);Unknown Thalassiosira (species) strain 1,Otu45,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Ostreoida,Otu44,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Caenogastropoda;Unknown Caenogastropoda family 1,Otu43,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Euryte;Euryte (genus);sp. (Euryte (genus)),Otu42,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Bryocamptus;Unknown Bryocamptus genus 1,Otu41,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Chelicerata;Pycnogonida;Ammothella;Ammothella (genus);spinifera (Ammothella (genus)),Otu40,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Annelida (XX (Annelida (X (Annelida (class)))));XXX (Annelida (XX (Annelida (X (Annelida (class))))));Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class)))))));XXX (Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class))))))));sp. (XXX (Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class))))))))),Otu58,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Heteroconchia;Hiatella;Hiatella (genus),Otu59,ERR7125539,4
+Main genome;Eukaryota;Apusozoa;Hilomonadea;Planomonadida;Planomonadidae;Planomonadidae (order);Unknown Planomonadidae (order) family 1,Otu50,ERR7125539,0
+No hits,Otu51,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Fungi;Ascomycota;Pezizomycotina;Sordariomycetes,Otu52,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Chromadorea;Chromadorea (order);Unknown Chromadorea (order) family 1,Otu53,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu54,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu55,ERR7125539,0
+Main genome;Eukaryota;Alveolata;Ciliophora;Oligohymenophorea;Peritrichia;Zoothamniidae;Zoothamnium;Zoothamnium (genus),Otu56,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Craniata;Craniata (class);X (Craniata (class));Teleostei,Otu57,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class)))),Otu8,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Branchiosyllis;Branchiosyllis (strain);exilis,Otu9,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nemertea;Nemertea (class);X (Nemertea (class));Nemertea (X (Nemertea (class)));XX (Nemertea (X (Nemertea (class))));Cephalothrix;Cephalothrix (strain),Otu6,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu7,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 1,Otu4,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Sphaerosyllis;Sphaerosyllis (strain);pirifera,Otu5,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu2,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu3,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Protula;Protula (strain);sp. (Protula (strain)),Otu1,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Hydrozoa,Otu29,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Craniata;Craniata (class);X (Craniata (class)),Otu28,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Porifera;Porifera (class);X (Porifera (class));Calcarea,Otu25,ERR7125539,0
+Main genome;Eukaryota,Otu24,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 2,Otu27,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu26,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Echinodermata;Echinodermata (class);X (Echinodermata (class));Echinodermata (X (Echinodermata (class)));XX (Echinodermata (X (Echinodermata (class)))),Otu21,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Orbinia;Orbinia (strain);swani,Otu20,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu23,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 1,Otu22,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Sabellaria;Sabellaria (strain),Otu116,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu117,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu114,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Unknown X (Urochordata (class)) family 2,Otu115,ERR7125539,0
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae,Otu112,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Maxillopoda (family);X (Maxillopoda (family));Maxillopoda (X (Maxillopoda (family)));X (Maxillopoda (X (Maxillopoda (family))));sp. (X (Maxillopoda (X (Maxillopoda (family))))),Otu113,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu110,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu111,ERR7125539,0
+No hits,Otu118,ERR7125539,0
+Main genome;Eukaryota,Otu38,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu39,ERR7125539,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 3,Otu36,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Ostreoida;Unknown Ostreoida family 1,Otu37,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Anthozoa,Otu34,ERR7125539,9
+Main genome;Eukaryota;Alveolata;Ciliophora;Spirotrichea;Hypotrichia,Otu35,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda,Otu32,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 2,Otu33,ERR7125539,0
+No hits,Otu30,ERR7125539,0
+Main genome;Eukaryota;Alveolata;Ciliophora;Spirotrichea;Choreotrichida;Strobilidiidae;A (Strobilidiidae);Rimostrombidium;A (Rimostrombidium);Rimostrombidium (A (Rimostrombidium));A (Rimostrombidium (A (Rimostrombidium)));sp. (A (Rimostrombidium (A (Rimostrombidium)))),Otu31,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu105,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu104,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Unknown X (Urochordata (class)) family 1,Otu107,ERR7125539,0
+Main genome;Eukaryota;Alveolata;Ciliophora;Heterotrichea;Heterotrichea (class);X (Heterotrichea (class));Folliculinidae;Folliculinidae (genus);X (Folliculinidae (genus));Folliculinidae (X (Folliculinidae (genus)));X (Folliculinidae (X (Folliculinidae (genus))));sp. (X (Folliculinidae (X (Folliculinidae (genus))))),Otu106,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Echinodermata;Echinodermata (class);X (Echinodermata (class));Echinodermata (X (Echinodermata (class)));XX (Echinodermata (X (Echinodermata (class))));Echinodermata (XX (Echinodermata (X (Echinodermata (class)))));XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))));Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class)))))));XXX (Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))))));sp. (XXX (Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))))))),Otu101,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Limoida;Lima;Lima (genus);lima (Lima (genus)),Otu100,ERR7125539,0
+Main genome;Eukaryota;Archaeplastida;Chlorophyta;Ulvophyceae;Bryopsidales;Ostreobiaceae;Ostreobium (Ostreobiaceae);Ostreobium (Ostreobium (Ostreobiaceae));Unknown Ostreobium (Ostreobium (Ostreobiaceae)) species 1,Otu103,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda,Otu102,ERR7125539,0
+No hits,Otu109,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Chelicerata;Pycnogonida,Otu108,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class)))),Otu83,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Caenogastropoda,Otu82,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Porifera;Porifera (class);X (Porifera (class));Demospongiae,Otu81,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Heterobranchia,Otu80,ERR7125539,0
+Main genome;Eukaryota;Archaeplastida;Chlorophyta;Trebouxiophyceae;Chlorellales;Chlorellales (order);X (Chlorellales (order)),Otu87,ERR7125539,0
+No hits,Otu86,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea;Unknown Ascidiacea genus 1,Otu85,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));Unknown Annelida (X (Annelida (class))) genus 1,Otu84,ERR7125539,1
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Ostracoda;Howeina;Unknown Howeina genus 1,Otu89,ERR7125539,0
+No hits,Otu88,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Malacostraca,Otu14,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Platyhelminthes;Turbellaria;Prolecithophora;Unknown Prolecithophora family 1,Otu15,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Salmacina;Salmacina (strain);sp. (Salmacina (strain)),Otu16,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Entoprocta;Entoprocta (class);X (Entoprocta (class));Entoprocta (X (Entoprocta (class)));XX (Entoprocta (X (Entoprocta (class))));Barentsia;Barentsia (strain),Otu17,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida;Musculus;Unknown Musculus genus 1,Otu10,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Platyhelminthes;Turbellaria;Polycladida;Stylochus;Stylochus (genus);orientalis (Stylochus (genus)),Otu11,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Notomastus;Notomastus (strain);latericeus,Otu12,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida;Adipicola;Adipicola (genus);longissima (Adipicola (genus)),Otu13,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Hydroides;Hydroides (strain);trivesiculosus,Otu18,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Arcoida,Otu19,ERR7125539,0
+No hits,Otu98,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu99,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Chromadorea;Chromadorea (order);Unknown Chromadorea (order) family 2,Otu94,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Salmacina;Salmacina (strain);sp. (Salmacina (strain)),Otu95,ERR7125539,0
+Main genome;Eukaryota;Stramenopiles;Sagenista;Labyrinthulomycetes;Labyrinthulida;Labyrinthulaceae;Aplanochytrium;Aplanochytrium (genus);sp. (Aplanochytrium (genus)),Otu96,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Unknown X (Cnidaria (class)) family 1,Otu97,ERR7125539,0
+Main genome;Eukaryota,Otu90,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Verruca;Unknown Verruca genus 1,Otu91,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda,Otu92,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Harmothoe;Harmothoe (strain);imbricata (Harmothoe (strain)),Otu93,ERR7125539,0
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu61,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 3,Otu60,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Malacostraca;Nebalia;Nebalia (genus);Unknown Nebalia (genus) species 1,Otu63,ERR7125545,0
+Main genome;Eukaryota;Stramenopiles;Ochrophyta,Otu62,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu65,ERR7125545,6
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu64,ERR7125545,4
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Branchiomma;Branchiomma (strain);sp. (Branchiomma (strain)),Otu67,ERR7125545,4
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Enoplea;Enoplea (order);X (Enoplea (order)),Otu66,ERR7125545,4
+Main genome;Eukaryota;Archaeplastida;Rhodophyta;Florideophyceae;Gigartinales;Gigartinales (order);X (Gigartinales (order)),Otu69,ERR7125545,0
+Main genome;Eukaryota;Alveolata;Dinoflagellata,Otu68,ERR7125545,4
+Main genome;Eukaryota;Alveolata;Apicomplexa;Gregarinomorphea;Gregarinomorphea (class);X (Gregarinomorphea (class));Gregarinomorphea (X (Gregarinomorphea (class)));XX (Gregarinomorphea (X (Gregarinomorphea (class))));Selenidium1;Selenidium1 (strain);sensimae,Otu72,ERR7125545,0
+Main genome;Eukaryota;Archaeplastida;Streptophyta;Embryophyceae;Embryophyceae (class);X (Embryophyceae (class));Embryophyceae (X (Embryophyceae (class)));XX (Embryophyceae (X (Embryophyceae (class)))),Otu73,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Fungi,Otu70,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Capitella;Capitella (strain);teleta,Otu71,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca,Otu76,ERR7125545,3
+No hits,Otu77,ERR7125545,3
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae;Polar-centric-Mediophyceae (genus);X (Polar-centric-Mediophyceae (genus));Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus)));X (Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus))));sp. (X (Polar-centric-Mediophyceae (X (Polar-centric-Mediophyceae (genus))))),Otu74,ERR7125545,0
+Main genome;Eukaryota;Rhizaria;Cercozoa;Endomyxa-Phytomyxea;Phagomyxida;Phagomyxidae;Phagomyxa;Unknown Phagomyxa genus 1,Otu75,ERR7125545,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Enoplea;Enoplea (order);Unknown Enoplea (order) family 1,Otu78,ERR7125545,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Unknown Crustacea order 1,Otu79,ERR7125545,3
+Main genome;Eukaryota;Stramenopiles;Pseudofungi;Oomycota;Oomycota (class);X (Oomycota (class));Oomycota (X (Oomycota (class)));XX (Oomycota (X (Oomycota (class))));Oomycota (XX (Oomycota (X (Oomycota (class)))));XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))));Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class)))))));XXX (Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))))));sp. (XXX (Oomycota (XXX (Oomycota (XX (Oomycota (X (Oomycota (class))))))))),Otu49,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Fungi,Otu48,ERR7125545,0
+No hits,Otu47,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Maxillopoda (family);X (Maxillopoda (family));Maxillopoda (X (Maxillopoda (family)));X (Maxillopoda (X (Maxillopoda (family))));sp. (X (Maxillopoda (X (Maxillopoda (family))))),Otu46,ERR7125545,0
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae;Thalassiosira;Thalassiosira (species);Unknown Thalassiosira (species) strain 1,Otu45,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Ostreoida,Otu44,ERR7125545,7
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Caenogastropoda;Unknown Caenogastropoda family 1,Otu43,ERR7125545,14
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Euryte;Euryte (genus);sp. (Euryte (genus)),Otu42,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Bryocamptus;Unknown Bryocamptus genus 1,Otu41,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Chelicerata;Pycnogonida;Ammothella;Ammothella (genus);spinifera (Ammothella (genus)),Otu40,ERR7125545,8
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Annelida (XX (Annelida (X (Annelida (class)))));XXX (Annelida (XX (Annelida (X (Annelida (class))))));Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class)))))));XXX (Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class))))))));sp. (XXX (Annelida (XXX (Annelida (XX (Annelida (X (Annelida (class))))))))),Otu58,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Heteroconchia;Hiatella;Hiatella (genus),Otu59,ERR7125545,0
+Main genome;Eukaryota;Apusozoa;Hilomonadea;Planomonadida;Planomonadidae;Planomonadidae (order);Unknown Planomonadidae (order) family 1,Otu50,ERR7125545,0
+No hits,Otu51,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Fungi;Ascomycota;Pezizomycotina;Sordariomycetes,Otu52,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Chromadorea;Chromadorea (order);Unknown Chromadorea (order) family 1,Otu53,ERR7125545,5
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu54,ERR7125545,7
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu55,ERR7125545,17
+Main genome;Eukaryota;Alveolata;Ciliophora;Oligohymenophorea;Peritrichia;Zoothamniidae;Zoothamnium;Zoothamnium (genus),Otu56,ERR7125545,5
+Main genome;Eukaryota;Opisthokonta;Metazoa;Craniata;Craniata (class);X (Craniata (class));Teleostei,Otu57,ERR7125545,5
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class)))),Otu8,ERR7125545,127
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Branchiosyllis;Branchiosyllis (strain);exilis,Otu9,ERR7125545,119
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nemertea;Nemertea (class);X (Nemertea (class));Nemertea (X (Nemertea (class)));XX (Nemertea (X (Nemertea (class))));Cephalothrix;Cephalothrix (strain),Otu6,ERR7125545,311
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu7,ERR7125545,200
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 1,Otu4,ERR7125545,514
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Sphaerosyllis;Sphaerosyllis (strain);pirifera,Otu5,ERR7125545,430
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu2,ERR7125545,6276
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu3,ERR7125545,4911
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Protula;Protula (strain);sp. (Protula (strain)),Otu1,ERR7125545,7862
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Hydrozoa,Otu29,ERR7125545,14
+Main genome;Eukaryota;Opisthokonta;Metazoa;Craniata;Craniata (class);X (Craniata (class)),Otu28,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Porifera;Porifera (class);X (Porifera (class));Calcarea,Otu25,ERR7125545,20
+Main genome;Eukaryota,Otu24,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 2,Otu27,ERR7125545,27
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu26,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Echinodermata;Echinodermata (class);X (Echinodermata (class));Echinodermata (X (Echinodermata (class)));XX (Echinodermata (X (Echinodermata (class)))),Otu21,ERR7125545,21
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Orbinia;Orbinia (strain);swani,Otu20,ERR7125545,10
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Pectinoida,Otu23,ERR7125545,20
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 1,Otu22,ERR7125545,23
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Sabellaria;Sabellaria (strain),Otu116,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu117,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu114,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Unknown X (Urochordata (class)) family 2,Otu115,ERR7125545,2
+Main genome;Eukaryota;Stramenopiles;Ochrophyta;Bacillariophyta;Bacillariophyta (class);X (Bacillariophyta (class));Polar-centric-Mediophyceae,Otu112,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Maxillopoda (family);X (Maxillopoda (family));Maxillopoda (X (Maxillopoda (family)));X (Maxillopoda (X (Maxillopoda (family))));sp. (X (Maxillopoda (X (Maxillopoda (family))))),Otu113,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu110,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu111,ERR7125545,2
+No hits,Otu118,ERR7125545,2
+Main genome;Eukaryota,Otu38,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida,Otu39,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Unknown X (Annelida (class)) family 3,Otu36,ERR7125545,9
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Ostreoida;Unknown Ostreoida family 1,Otu37,ERR7125545,14
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Anthozoa,Otu34,ERR7125545,4
+Main genome;Eukaryota;Alveolata;Ciliophora;Spirotrichea;Hypotrichia,Otu35,ERR7125545,9
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda,Otu32,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Unknown Maxillopoda family 2,Otu33,ERR7125545,0
+No hits,Otu30,ERR7125545,12
+Main genome;Eukaryota;Alveolata;Ciliophora;Spirotrichea;Choreotrichida;Strobilidiidae;A (Strobilidiidae);Rimostrombidium;A (Rimostrombidium);Rimostrombidium (A (Rimostrombidium));A (Rimostrombidium (A (Rimostrombidium)));sp. (A (Rimostrombidium (A (Rimostrombidium)))),Otu31,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu105,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea,Otu104,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Unknown X (Urochordata (class)) family 1,Otu107,ERR7125545,2
+Main genome;Eukaryota;Alveolata;Ciliophora;Heterotrichea;Heterotrichea (class);X (Heterotrichea (class));Folliculinidae;Folliculinidae (genus);X (Folliculinidae (genus));Folliculinidae (X (Folliculinidae (genus)));X (Folliculinidae (X (Folliculinidae (genus))));sp. (X (Folliculinidae (X (Folliculinidae (genus))))),Otu106,ERR7125545,4
+Main genome;Eukaryota;Opisthokonta;Metazoa;Echinodermata;Echinodermata (class);X (Echinodermata (class));Echinodermata (X (Echinodermata (class)));XX (Echinodermata (X (Echinodermata (class))));Echinodermata (XX (Echinodermata (X (Echinodermata (class)))));XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))));Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class)))))));XXX (Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))))));sp. (XXX (Echinodermata (XXX (Echinodermata (XX (Echinodermata (X (Echinodermata (class))))))))),Otu101,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Limoida;Lima;Lima (genus);lima (Lima (genus)),Otu100,ERR7125545,2
+Main genome;Eukaryota;Archaeplastida;Chlorophyta;Ulvophyceae;Bryopsidales;Ostreobiaceae;Ostreobium (Ostreobiaceae);Ostreobium (Ostreobium (Ostreobiaceae));Unknown Ostreobium (Ostreobium (Ostreobiaceae)) species 1,Otu103,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda,Otu102,ERR7125545,2
+No hits,Otu109,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Chelicerata;Pycnogonida,Otu108,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class)))),Otu83,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Caenogastropoda,Otu82,ERR7125545,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Porifera;Porifera (class);X (Porifera (class));Demospongiae,Otu81,ERR7125545,3
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Gastropoda;Heterobranchia,Otu80,ERR7125545,3
+Main genome;Eukaryota;Archaeplastida;Chlorophyta;Trebouxiophyceae;Chlorellales;Chlorellales (order);X (Chlorellales (order)),Otu87,ERR7125545,0
+No hits,Otu86,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Urochordata;Urochordata (class);X (Urochordata (class));Ascidiacea;Unknown Ascidiacea genus 1,Otu85,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));Unknown Annelida (X (Annelida (class))) genus 1,Otu84,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Ostracoda;Howeina;Unknown Howeina genus 1,Otu89,ERR7125545,0
+No hits,Otu88,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Malacostraca,Otu14,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Platyhelminthes;Turbellaria;Prolecithophora;Unknown Prolecithophora family 1,Otu15,ERR7125545,36
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Salmacina;Salmacina (strain);sp. (Salmacina (strain)),Otu16,ERR7125545,33
+Main genome;Eukaryota;Opisthokonta;Metazoa;Entoprocta;Entoprocta (class);X (Entoprocta (class));Entoprocta (X (Entoprocta (class)));XX (Entoprocta (X (Entoprocta (class))));Barentsia;Barentsia (strain),Otu17,ERR7125545,25
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida;Musculus;Unknown Musculus genus 1,Otu10,ERR7125545,54
+Main genome;Eukaryota;Opisthokonta;Metazoa;Platyhelminthes;Turbellaria;Polycladida;Stylochus;Stylochus (genus);orientalis (Stylochus (genus)),Otu11,ERR7125545,55
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Notomastus;Notomastus (strain);latericeus,Otu12,ERR7125545,66
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Mytiloida;Adipicola;Adipicola (genus);longissima (Adipicola (genus)),Otu13,ERR7125545,92
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Hydroides;Hydroides (strain);trivesiculosus,Otu18,ERR7125545,29
+Main genome;Eukaryota;Opisthokonta;Metazoa;Mollusca;Bivalvia;Arcoida,Otu19,ERR7125545,28
+No hits,Otu98,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa,Otu99,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Nematoda;Chromadorea;Chromadorea (order);Unknown Chromadorea (order) family 2,Otu94,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Salmacina;Salmacina (strain);sp. (Salmacina (strain)),Otu95,ERR7125545,2
+Main genome;Eukaryota;Stramenopiles;Sagenista;Labyrinthulomycetes;Labyrinthulida;Labyrinthulaceae;Aplanochytrium;Aplanochytrium (genus);sp. (Aplanochytrium (genus)),Otu96,ERR7125545,2
+Main genome;Eukaryota;Opisthokonta;Metazoa;Cnidaria;Cnidaria (class);X (Cnidaria (class));Unknown X (Cnidaria (class)) family 1,Otu97,ERR7125545,2
+Main genome;Eukaryota,Otu90,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda;Verruca;Unknown Verruca genus 1,Otu91,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Arthropoda;Crustacea;Maxillopoda,Otu92,ERR7125545,0
+Main genome;Eukaryota;Opisthokonta;Metazoa;Annelida;Annelida (class);X (Annelida (class));Annelida (X (Annelida (class)));XX (Annelida (X (Annelida (class))));Harmothoe;Harmothoe (strain);imbricata (Harmothoe (strain)),Otu93,ERR7125545,0
