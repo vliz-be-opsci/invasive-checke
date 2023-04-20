@@ -11,10 +11,9 @@ services:
     env_file:
       - .env  
     volumes:
-      - ./tests/:/tmp/tests/
-    command: python /code/app/main.py -l DEBUG -i /tmp/tests/test_Dec_2022/final_table.tsv -m /tmp/tests/test_Dec_2022/ARMS4Tesseract_PEMA_data.csv -o /tmp/tests/test_Dec_2022/output/
+      - ./tests/:/mnt/tests
+    command: python /code/app/main.py -l DEBUG -i /mnt/tests/test_012023/final_table.tsv -m /mnt/tests/test_012023/ARMS4Tesseract_PEMA_data.csv -o /mnt/tests/test_012023/output/
     logging:
       driver: json-file
       options:
         max-size: 10m 
- 

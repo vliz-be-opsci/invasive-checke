@@ -1,11 +1,6 @@
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9-slim
+FROM mambaorg/micromamba:bullseye-slim
 WORKDIR /code
-COPY ./requirements.txt /code/requirements.txt
-
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-RUN apt-get update && apt-get install -y \
-vim\
-&& rm -rf /var/lib/apt/lists/*
-
+COPY ./environment.yml /code/environment.yml
 COPY ./app /code/app
 COPY ./invasive_checker /code/app/invasive_checker/
+RUN micromamba install -y -n base -f /code/environment.yml && micromamba clean --all --yes

@@ -4,10 +4,10 @@ import json
 import logging 
 import argparse
 import traceback 
+from hashlib import md5
 #--- Pip libs ---
 # import numpy as np
 import pandas as pd 
-import functools
 #--- Custom libs ---
 from invasive_checker import invasive_checker, utils 
 
@@ -100,6 +100,14 @@ def do_work(input_file, output_folder, meta_file, cfg):
 
     '''
     log.info('  -Preparing data...')
+
+    with open(f"{output_folder}/invasive_checker.log", "w", encoding="utf8") as f:
+        with open(input_file, "rb") as fi:
+            f.write(f"{md5(fi.read()).hexdigest()}\t(md5sum of {input_file})\n")
+        with open(meta_file, "rb") as fm:
+            f.write(f"{md5(fm.read()).hexdigest()}\t(md5sum of {meta_file})\n")
+
+
     worms_df = pd.read_csv(input_file, sep = cfg.get('SEP'))
     worms_df = clean_up_dataframes(worms_df, cfg)
 
