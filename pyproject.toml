@@ -22,7 +22,6 @@ classifiers = [
 python = "^3.10"
 pandas = "^2.0.1"
 shapely = "^2.0.1"
-rdflib = "^6.3.2"
 poetry = "^1.5.0"
 
 # Development tools
