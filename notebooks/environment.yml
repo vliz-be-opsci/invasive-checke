@@ -1,0 +1,9 @@
+name: lw-iji-invasive-checker-ipynb
+dependencies:
+  - python=3.9
+  - pip
+  - ipykernel
+  - pandas=1.4
+  - requests
+  - openpyxl
+  - xlsxwriter
